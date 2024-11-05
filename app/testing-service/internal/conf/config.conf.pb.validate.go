@@ -58,11 +58,11 @@ func (m *ServiceConfig) validate(all bool) error {
 	var errors []error
 
 	if all {
-		switch v := interface{}(m.GetTestService()).(type) {
+		switch v := interface{}(m.GetTestingService()).(type) {
 		case interface{ ValidateAll() error }:
 			if err := v.ValidateAll(); err != nil {
 				errors = append(errors, ServiceConfigValidationError{
-					field:  "TestService",
+					field:  "TestingService",
 					reason: "embedded message failed validation",
 					cause:  err,
 				})
@@ -70,16 +70,16 @@ func (m *ServiceConfig) validate(all bool) error {
 		case interface{ Validate() error }:
 			if err := v.Validate(); err != nil {
 				errors = append(errors, ServiceConfigValidationError{
-					field:  "TestService",
+					field:  "TestingService",
 					reason: "embedded message failed validation",
 					cause:  err,
 				})
 			}
 		}
-	} else if v, ok := interface{}(m.GetTestService()).(interface{ Validate() error }); ok {
+	} else if v, ok := interface{}(m.GetTestingService()).(interface{ Validate() error }); ok {
 		if err := v.Validate(); err != nil {
 			return ServiceConfigValidationError{
-				field:  "TestService",
+				field:  "TestingService",
 				reason: "embedded message failed validation",
 				cause:  err,
 			}

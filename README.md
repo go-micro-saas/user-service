@@ -51,3 +51,5 @@ go run ./app/service-layout/cmd/store-configuration/... -conf=./app/service-layo
 ## 文档
 
 > 生成文档：`make protoc-api-protobuf`
+
+* api文档swagger [xxx.swagger.json](api/testing-service/v1/services/testdata.service.v1.swagger.json)

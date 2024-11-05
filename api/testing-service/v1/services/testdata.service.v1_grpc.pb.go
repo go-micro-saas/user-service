@@ -2,13 +2,13 @@
 // versions:
 // - protoc-gen-go-grpc v1.3.0
 // - protoc             v3.21.6
-// source: api/testdata-service/v1/services/testdata.service.v1.proto
+// source: api/testing-service/v1/services/testdata.service.v1.proto
 
 package servicev1
 
 import (
 	context "context"
-	resources "github.com/go-micro-saas/service-layout/api/testdata-service/v1/resources"
+	resources "github.com/go-micro-saas/service-layout/api/testing-service/v1/resources"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -20,15 +20,15 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	SrvTestdata_Websocket_FullMethodName           = "/saas.api.testdata.servicev1.SrvTestdata/Websocket"
-	SrvTestdata_Get_FullMethodName                 = "/saas.api.testdata.servicev1.SrvTestdata/Get"
-	SrvTestdata_Put_FullMethodName                 = "/saas.api.testdata.servicev1.SrvTestdata/Put"
-	SrvTestdata_Post_FullMethodName                = "/saas.api.testdata.servicev1.SrvTestdata/Post"
-	SrvTestdata_Delete_FullMethodName              = "/saas.api.testdata.servicev1.SrvTestdata/Delete"
-	SrvTestdata_Patch_FullMethodName               = "/saas.api.testdata.servicev1.SrvTestdata/Patch"
-	SrvTestdata_ServerToClient_FullMethodName      = "/saas.api.testdata.servicev1.SrvTestdata/ServerToClient"
-	SrvTestdata_ClientToServer_FullMethodName      = "/saas.api.testdata.servicev1.SrvTestdata/ClientToServer"
-	SrvTestdata_BidirectionalStream_FullMethodName = "/saas.api.testdata.servicev1.SrvTestdata/BidirectionalStream"
+	SrvTestdata_Websocket_FullMethodName           = "/saas.api.testing.servicev1.SrvTestdata/Websocket"
+	SrvTestdata_Get_FullMethodName                 = "/saas.api.testing.servicev1.SrvTestdata/Get"
+	SrvTestdata_Put_FullMethodName                 = "/saas.api.testing.servicev1.SrvTestdata/Put"
+	SrvTestdata_Post_FullMethodName                = "/saas.api.testing.servicev1.SrvTestdata/Post"
+	SrvTestdata_Delete_FullMethodName              = "/saas.api.testing.servicev1.SrvTestdata/Delete"
+	SrvTestdata_Patch_FullMethodName               = "/saas.api.testing.servicev1.SrvTestdata/Patch"
+	SrvTestdata_ServerToClient_FullMethodName      = "/saas.api.testing.servicev1.SrvTestdata/ServerToClient"
+	SrvTestdata_ClientToServer_FullMethodName      = "/saas.api.testing.servicev1.SrvTestdata/ClientToServer"
+	SrvTestdata_BidirectionalStream_FullMethodName = "/saas.api.testing.servicev1.SrvTestdata/BidirectionalStream"
 )
 
 // SrvTestdataClient is the client API for SrvTestdata service.
@@ -468,7 +468,7 @@ func (x *srvTestdataBidirectionalStreamServer) Recv() (*resources.TestReq, error
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var SrvTestdata_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "saas.api.testdata.servicev1.SrvTestdata",
+	ServiceName: "saas.api.testing.servicev1.SrvTestdata",
 	HandlerType: (*SrvTestdataServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -514,5 +514,5 @@ var SrvTestdata_ServiceDesc = grpc.ServiceDesc{
 			ClientStreams: true,
 		},
 	},
-	Metadata: "api/testdata-service/v1/services/testdata.service.v1.proto",
+	Metadata: "api/testing-service/v1/services/testdata.service.v1.proto",
 }

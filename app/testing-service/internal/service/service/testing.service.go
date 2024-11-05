@@ -2,7 +2,7 @@ package service
 
 import (
 	"github.com/go-kratos/kratos/log"
-	servicev1 "github.com/go-micro-saas/service-layout/api/testdata-service/v1/services"
+	servicev1 "github.com/go-micro-saas/service-layout/api/testing-service/v1/services"
 	bizrepos "github.com/go-micro-saas/service-layout/app/testing-service/internal/biz/repo"
 )
 

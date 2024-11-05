@@ -89,7 +89,8 @@ generate:
 
 # api
 include api/makefile_protoc.mk
-include api/testdata-service/makefile_protoc.mk
+include api/testing-service/makefile_protoc.mk
+include api/testing-service/v1/makefile_protoc.mk
 
 # run
 #include app/nodeid-service/cmd/makefile_run.mk

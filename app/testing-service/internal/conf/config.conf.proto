@@ -13,5 +13,5 @@ message ServiceConfig {
   message TestingService {
     string key = 1 [(validate.rules).string = { ignore_empty: true }];
   }
-  TestingService test_service = 1;
+  TestingService testing_service = 1;
 }

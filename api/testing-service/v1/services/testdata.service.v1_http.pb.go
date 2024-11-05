@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-http v2.7.3
 // - protoc             v3.21.6
-// source: api/testdata-service/v1/services/testdata.service.v1.proto
+// source: api/testing-service/v1/services/testdata.service.v1.proto
 
 package servicev1
 
@@ -10,7 +10,7 @@ import (
 	context "context"
 	http "github.com/go-kratos/kratos/v2/transport/http"
 	binding "github.com/go-kratos/kratos/v2/transport/http/binding"
-	resources "github.com/go-micro-saas/service-layout/api/testdata-service/v1/resources"
+	resources "github.com/go-micro-saas/service-layout/api/testing-service/v1/resources"
 )
 
 // This is a compile-time assertion to ensure that this generated file
@@ -20,12 +20,12 @@ var _ = binding.EncodeURL
 
 const _ = http.SupportPackageIsVersion1
 
-const OperationSrvTestdataDelete = "/saas.api.testdata.servicev1.SrvTestdata/Delete"
-const OperationSrvTestdataGet = "/saas.api.testdata.servicev1.SrvTestdata/Get"
-const OperationSrvTestdataPatch = "/saas.api.testdata.servicev1.SrvTestdata/Patch"
-const OperationSrvTestdataPost = "/saas.api.testdata.servicev1.SrvTestdata/Post"
-const OperationSrvTestdataPut = "/saas.api.testdata.servicev1.SrvTestdata/Put"
-const OperationSrvTestdataWebsocket = "/saas.api.testdata.servicev1.SrvTestdata/Websocket"
+const OperationSrvTestdataDelete = "/saas.api.testing.servicev1.SrvTestdata/Delete"
+const OperationSrvTestdataGet = "/saas.api.testing.servicev1.SrvTestdata/Get"
+const OperationSrvTestdataPatch = "/saas.api.testing.servicev1.SrvTestdata/Patch"
+const OperationSrvTestdataPost = "/saas.api.testing.servicev1.SrvTestdata/Post"
+const OperationSrvTestdataPut = "/saas.api.testing.servicev1.SrvTestdata/Put"
+const OperationSrvTestdataWebsocket = "/saas.api.testing.servicev1.SrvTestdata/Websocket"
 
 type SrvTestdataHTTPServer interface {
 	// Delete Delete Delete
