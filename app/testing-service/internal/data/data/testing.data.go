@@ -1,7 +1,7 @@
 package data
 
 import (
-	"github.com/go-kratos/kratos/log"
+	"github.com/go-kratos/kratos/v2/log"
 	datarepos "github.com/go-micro-saas/service-layout/app/testing-service/internal/data/repo"
 )
 

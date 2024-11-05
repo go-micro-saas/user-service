@@ -1,7 +1,7 @@
 package service
 
 import (
-	"github.com/go-kratos/kratos/transport/grpc"
+	"github.com/go-kratos/kratos/v2/transport/grpc"
 	"github.com/go-kratos/kratos/v2/transport/http"
 	servicev1 "github.com/go-micro-saas/service-layout/api/testing-service/v1/services"
 	serverutil "github.com/ikaiguang/go-srv-kit/service/server"

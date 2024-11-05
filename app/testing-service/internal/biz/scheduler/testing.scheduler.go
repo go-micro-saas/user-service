@@ -1,7 +1,7 @@
 package schedulers
 
 import (
-	"github.com/go-kratos/kratos/log"
+	"github.com/go-kratos/kratos/v2/log"
 	bizrepos "github.com/go-micro-saas/service-layout/app/testing-service/internal/biz/repo"
 )
 
