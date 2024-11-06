@@ -79,8 +79,7 @@ init:
 # generate
 generate:
 	#go mod tidy
-	#wire ./app/nodeid-service/cmd/nodeid-service/export
-	#wire ./app/uuid-service/cmd/uuid-service/export
+	#wire ./app/testing-service/cmd/testing-service/export
 	go generate ./...
 
 # ===== include =====
@@ -93,7 +92,8 @@ include api/testing-service/makefile_protoc.mk
 include api/testing-service/v1/makefile_protoc.mk
 
 # run
-#include app/nodeid-service/cmd/makefile_run.mk
+include app/all-in-one/makefile_run.mk
+include app/testing-service/cmd/makefile_run.mk
 
 # build
 #include devops/makefile_cicd.mk

@@ -1,6 +1,8 @@
 package schemas
 
 import (
+	migrationpkg "github.com/ikaiguang/go-srv-kit/data/migration"
+	"gorm.io/gorm"
 	"time"
 )
 
@@ -43,4 +45,87 @@ type Testing struct {
 // TableName 表名
 func (s *Testing) TableName() string {
 	return "test_testdata"
+}
+
+// CreateTableMigrator create table migrator
+func (s *Testing) CreateTableMigrator(migrator gorm.Migrator) migrationpkg.MigrationInterface {
+	return migrationpkg.NewCreateTable(migrator, migrationpkg.Version, s)
+}
+
+// DropTableMigrator create table migrator
+func (s *Testing) DropTableMigrator(migrator gorm.Migrator) migrationpkg.MigrationInterface {
+	return migrationpkg.NewDropTable(migrator, migrationpkg.Version, s)
+}
+
+// AddColumnAccessToken 添加字段
+func (s *Testing) AddColumnAccessToken(migrator gorm.Migrator) migrationpkg.MigrationInterface {
+	var (
+		dataModel           = &Testing{}
+		columnName          = "access_token"
+		migrationVersion    = migrationpkg.Version
+		migrationIdentifier = migrationVersion + ":" + s.TableName() + ":add_column:" + columnName
+	)
+	migrationUp := func() error {
+		if migrator.HasColumn(dataModel, columnName) {
+			return nil
+		}
+		return migrator.AddColumn(dataModel, columnName)
+	}
+	migrationDown := func() error {
+		if !migrator.HasColumn(dataModel, columnName) {
+			return nil
+		}
+		return migrator.DropColumn(dataModel, columnName)
+	}
+
+	return migrationpkg.NewAnyMigrator(
+		migrationVersion,
+		migrationIdentifier,
+		migrationUp,
+		migrationDown,
+	)
+}
+
+// TestingUniqueIndex ...
+type TestingUniqueIndex struct {
+	ColumnInt  int32  `gorm:"column:column_int;uniqueIndex:idx_testing_int_uint;type:int;not null;default:0;comment:整型"`
+	ColumnUint uint32 `gorm:"column:column_uint;uniqueIndex:idx_testing_int_uint;type:uint;not null;default:0;comment:整型：无符号"`
+}
+
+// TableName table name
+func (s *TestingUniqueIndex) TableName() string {
+	return TestingSchema.TableName()
+}
+
+func (s *TestingUniqueIndex) IndexName() string {
+	return "idx_testing_int_uint"
+}
+
+// CreateUniqueIndexForIntAndUint 创建唯一索引
+func (s *Testing) CreateUniqueIndexForIntAndUint(migrator gorm.Migrator) migrationpkg.MigrationInterface {
+	var (
+		dataModel           = &TestingUniqueIndex{}
+		indexName           = dataModel.IndexName()
+		migrationVersion    = migrationpkg.Version
+		migrationIdentifier = migrationVersion + ":" + s.TableName() + ":create_unique_index:" + indexName
+	)
+	migrationUp := func() error {
+		if migrator.HasIndex(dataModel, indexName) {
+			return nil
+		}
+		return migrator.CreateIndex(dataModel, indexName)
+	}
+	migrationDown := func() error {
+		if !migrator.HasIndex(dataModel, indexName) {
+			return nil
+		}
+		return migrator.DropIndex(dataModel, indexName)
+	}
+
+	return migrationpkg.NewAnyMigrator(
+		migrationVersion,
+		migrationIdentifier,
+		migrationUp,
+		migrationDown,
+	)
 }
