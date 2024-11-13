@@ -5,10 +5,14 @@ go 1.22
 require (
 	github.com/envoyproxy/protoc-gen-validate v1.1.0
 	github.com/go-kratos/kratos/v2 v2.8.2
-	github.com/ikaiguang/go-srv-kit v0.3.20
+	github.com/google/wire v0.6.0
+	github.com/gorilla/websocket v1.5.3
+	github.com/ikaiguang/go-srv-kit v0.3.22
+	github.com/stretchr/testify v1.9.0
 	google.golang.org/genproto/googleapis/api v0.0.0-20241104194629-dd2ea8efbc28
 	google.golang.org/grpc v1.67.1
 	google.golang.org/protobuf v1.35.1
+	gorm.io/gorm v1.25.12
 )
 
 require (
@@ -17,11 +21,13 @@ require (
 	github.com/ThreeDotsLabs/watermill v1.3.7 // indirect
 	github.com/ThreeDotsLabs/watermill-amqp/v2 v2.1.3 // indirect
 	github.com/armon/go-metrics v0.4.1 // indirect
+	github.com/bwmarrin/snowflake v0.3.0 // indirect
 	github.com/cenkalti/backoff/v3 v3.2.2 // indirect
 	github.com/cenkalti/backoff/v4 v4.3.0 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/coreos/go-semver v0.3.0 // indirect
 	github.com/coreos/go-systemd/v22 v22.3.2 // indirect
+	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
 	github.com/fatih/color v1.16.0 // indirect
 	github.com/felixge/httpsnoop v1.0.3 // indirect
@@ -40,7 +46,6 @@ require (
 	github.com/golang/protobuf v1.5.4 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/google/uuid v1.6.0 // indirect
-	github.com/google/wire v0.6.0 // indirect
 	github.com/gorilla/handlers v1.5.2 // indirect
 	github.com/gorilla/mux v1.8.1 // indirect
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.22.0 // indirect
@@ -72,9 +77,11 @@ require (
 	github.com/oklog/ulid v1.3.1 // indirect
 	github.com/patrickmn/go-cache v2.1.0+incompatible // indirect
 	github.com/pkg/errors v0.9.1 // indirect
+	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
 	github.com/rabbitmq/amqp091-go v1.10.0 // indirect
 	github.com/redis/go-redis/v9 v9.7.0 // indirect
 	github.com/rs/xid v1.6.0 // indirect
+	github.com/sony/sonyflake v1.2.0 // indirect
 	github.com/tidwall/gjson v1.14.2 // indirect
 	github.com/tidwall/match v1.1.1 // indirect
 	github.com/tidwall/pretty v1.2.0 // indirect
@@ -109,6 +116,5 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	gorm.io/driver/mysql v1.5.7 // indirect
 	gorm.io/driver/postgres v1.5.9 // indirect
-	gorm.io/gorm v1.25.12 // indirect
 	gorm.io/hints v1.1.2 // indirect
 )
