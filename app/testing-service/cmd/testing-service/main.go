@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	serviceexporter "github.com/go-micro-saas/service-layout/app/testing-service/cmd/testing-service/export"
 	serverutil "github.com/ikaiguang/go-srv-kit/service/server"
 	stdlog "log"
 )
