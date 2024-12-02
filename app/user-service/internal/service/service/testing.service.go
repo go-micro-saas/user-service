@@ -5,8 +5,8 @@ import (
 	"github.com/go-kratos/kratos/v2/log"
 	resourcev1 "github.com/go-micro-saas/user-service/api/testing-service/v1/resources"
 	servicev1 "github.com/go-micro-saas/user-service/api/testing-service/v1/services"
-	bizrepos "github.com/go-micro-saas/user-service/app/testing-service/internal/biz/repo"
-	"github.com/go-micro-saas/user-service/app/testing-service/internal/service/dto"
+	bizrepos "github.com/go-micro-saas/user-service/app/user-service/internal/biz/repo"
+	"github.com/go-micro-saas/user-service/app/user-service/internal/service/dto"
 )
 
 type testingV1Service struct {

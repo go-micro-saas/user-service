@@ -2,7 +2,7 @@ package events
 
 import (
 	"github.com/go-kratos/kratos/v2/log"
-	bizrepos "github.com/go-micro-saas/user-service/app/testing-service/internal/biz/repo"
+	bizrepos "github.com/go-micro-saas/user-service/app/user-service/internal/biz/repo"
 )
 
 type testingEvent struct {
