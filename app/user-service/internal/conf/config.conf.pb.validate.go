@@ -190,6 +190,35 @@ func (m *ServiceConfig_UserService) validate(all bool) error {
 
 	}
 
+	if all {
+		switch v := interface{}(m.GetSnowflake()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ServiceConfig_UserServiceValidationError{
+					field:  "Snowflake",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ServiceConfig_UserServiceValidationError{
+					field:  "Snowflake",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetSnowflake()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ServiceConfig_UserServiceValidationError{
+				field:  "Snowflake",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
 	if len(errors) > 0 {
 		return ServiceConfig_UserServiceMultiError(errors)
 	}
@@ -269,3 +298,123 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = ServiceConfig_UserServiceValidationError{}
+
+// Validate checks the field values on ServiceConfig_UserService_Snowflake with
+// the rules defined in the proto definition for this message. If any rules
+// are violated, the first error encountered is returned, or nil if there are
+// no violations.
+func (m *ServiceConfig_UserService_Snowflake) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on ServiceConfig_UserService_Snowflake
+// with the rules defined in the proto definition for this message. If any
+// rules are violated, the result is a list of violation errors wrapped in
+// ServiceConfig_UserService_SnowflakeMultiError, or nil if none found.
+func (m *ServiceConfig_UserService_Snowflake) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *ServiceConfig_UserService_Snowflake) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if utf8.RuneCountInString(m.GetInstanceId()) < 1 {
+		err := ServiceConfig_UserService_SnowflakeValidationError{
+			field:  "InstanceId",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	// no validation rules for InstanceName
+
+	// no validation rules for Metadata
+
+	if len(errors) > 0 {
+		return ServiceConfig_UserService_SnowflakeMultiError(errors)
+	}
+
+	return nil
+}
+
+// ServiceConfig_UserService_SnowflakeMultiError is an error wrapping multiple
+// validation errors returned by
+// ServiceConfig_UserService_Snowflake.ValidateAll() if the designated
+// constraints aren't met.
+type ServiceConfig_UserService_SnowflakeMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ServiceConfig_UserService_SnowflakeMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ServiceConfig_UserService_SnowflakeMultiError) AllErrors() []error { return m }
+
+// ServiceConfig_UserService_SnowflakeValidationError is the validation error
+// returned by ServiceConfig_UserService_Snowflake.Validate if the designated
+// constraints aren't met.
+type ServiceConfig_UserService_SnowflakeValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ServiceConfig_UserService_SnowflakeValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ServiceConfig_UserService_SnowflakeValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ServiceConfig_UserService_SnowflakeValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ServiceConfig_UserService_SnowflakeValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ServiceConfig_UserService_SnowflakeValidationError) ErrorName() string {
+	return "ServiceConfig_UserService_SnowflakeValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e ServiceConfig_UserService_SnowflakeValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sServiceConfig_UserService_Snowflake.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ServiceConfig_UserService_SnowflakeValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ServiceConfig_UserService_SnowflakeValidationError{}
