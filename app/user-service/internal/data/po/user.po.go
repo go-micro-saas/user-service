@@ -30,3 +30,12 @@ type User struct {
 	BlacklistTime uint64                                       `gorm:"column:blacklist_time" json:"blacklist_time"` // 黑名单时间
 	PasswordHash  string                                       `gorm:"column:password_hash" json:"password_hash"`   // 密码HASH
 }
+
+func (s *User) IsValidStatus() bool {
+	switch s.UserStatus {
+	default:
+		return true
+	case enumv1.UserStatusEnum_DISABLE, enumv1.UserStatusEnum_BLACKLIST, enumv1.UserStatusEnum_DELETED:
+		return false
+	}
+}

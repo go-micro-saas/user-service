@@ -17,6 +17,7 @@ type UserDataRepo interface {
 	Update(ctx context.Context, dataModel *po.User) error
 	ExistUpdate(ctx context.Context, dataModel *po.User) (anotherModel *po.User, isNotFound bool, err error)
 	QueryOneById(ctx context.Context, id interface{}) (dataModel *po.User, isNotFound bool, err error)
+	QueryOneByUserId(ctx context.Context, userId int64) (dataModel *po.User, isNotFound bool, err error)
 	QueryOneByConditions(ctx context.Context, conditions map[string]interface{}) (dataModel *po.User, isNotFound bool, err error)
 	QueryAllByConditions(ctx context.Context, conditions map[string]interface{}) (dataModels []*po.User, err error)
 	List(ctx context.Context, conditions map[string]interface{}, paginatorArgs *gormpkg.PaginatorArgs) (dataModels []*po.User, totalNumber int64, err error)

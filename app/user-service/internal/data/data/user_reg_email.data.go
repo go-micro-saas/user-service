@@ -14,15 +14,15 @@ import (
 	"strings"
 )
 
-// userRegEmailRepo repo
-type userRegEmailRepo struct {
+// userRegEmailDataRepo repo
+type userRegEmailDataRepo struct {
 	dbConn             *gorm.DB             // *gorm.DB
 	UserRegEmailSchema schemas.UserRegEmail // UserRegEmail
 }
 
 // NewUserRegEmailRepo new data repo
 func NewUserRegEmailRepo(dbConn *gorm.DB) datarepos.UserRegEmailDataRepo {
-	return &userRegEmailRepo{
+	return &userRegEmailDataRepo{
 		dbConn: dbConn,
 	}
 }
@@ -30,7 +30,7 @@ func NewUserRegEmailRepo(dbConn *gorm.DB) datarepos.UserRegEmailDataRepo {
 // =============== 创建 ===============
 
 // create insert one
-func (s *userRegEmailRepo) create(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegEmail) (err error) {
+func (s *userRegEmailDataRepo) create(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegEmail) (err error) {
 	err = dbConn.WithContext(ctx).
 		Table(s.UserRegEmailSchema.TableName()).
 		Create(dataModel).Error
@@ -42,17 +42,17 @@ func (s *userRegEmailRepo) create(ctx context.Context, dbConn *gorm.DB, dataMode
 }
 
 // Create insert one
-func (s *userRegEmailRepo) Create(ctx context.Context, dataModel *po.UserRegEmail) error {
+func (s *userRegEmailDataRepo) Create(ctx context.Context, dataModel *po.UserRegEmail) error {
 	return s.create(ctx, s.dbConn, dataModel)
 }
 
 // CreateWithDBConn create
-func (s *userRegEmailRepo) CreateWithDBConn(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegEmail) error {
+func (s *userRegEmailDataRepo) CreateWithDBConn(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegEmail) error {
 	return s.create(ctx, dbConn, dataModel)
 }
 
 // existCreate exist create
-func (s *userRegEmailRepo) existCreate(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegEmail) (anotherModel *po.UserRegEmail, isNotFound bool, err error) {
+func (s *userRegEmailDataRepo) existCreate(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegEmail) (anotherModel *po.UserRegEmail, isNotFound bool, err error) {
 	anotherModel = new(po.UserRegEmail)
 	err = dbConn.WithContext(ctx).
 		Table(s.UserRegEmailSchema.TableName()).
@@ -72,17 +72,17 @@ func (s *userRegEmailRepo) existCreate(ctx context.Context, dbConn *gorm.DB, dat
 }
 
 // ExistCreate exist create
-func (s *userRegEmailRepo) ExistCreate(ctx context.Context, dataModel *po.UserRegEmail) (anotherModel *po.UserRegEmail, isNotFound bool, err error) {
+func (s *userRegEmailDataRepo) ExistCreate(ctx context.Context, dataModel *po.UserRegEmail) (anotherModel *po.UserRegEmail, isNotFound bool, err error) {
 	return s.existCreate(ctx, s.dbConn, dataModel)
 }
 
 // ExistCreateWithDBConn exist create
-func (s *userRegEmailRepo) ExistCreateWithDBConn(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegEmail) (anotherModel *po.UserRegEmail, isNotFound bool, err error) {
+func (s *userRegEmailDataRepo) ExistCreateWithDBConn(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegEmail) (anotherModel *po.UserRegEmail, isNotFound bool, err error) {
 	return s.existCreate(ctx, dbConn, dataModel)
 }
 
 // createInBatches create many
-func (s *userRegEmailRepo) createInBatches(ctx context.Context, dbConn *gorm.DB, dataModels []*po.UserRegEmail, batchSize int) (err error) {
+func (s *userRegEmailDataRepo) createInBatches(ctx context.Context, dbConn *gorm.DB, dataModels []*po.UserRegEmail, batchSize int) (err error) {
 	err = dbConn.WithContext(ctx).
 		Table(s.UserRegEmailSchema.TableName()).
 		CreateInBatches(dataModels, batchSize).Error
@@ -94,19 +94,19 @@ func (s *userRegEmailRepo) createInBatches(ctx context.Context, dbConn *gorm.DB,
 }
 
 // CreateInBatches create many
-func (s *userRegEmailRepo) CreateInBatches(ctx context.Context, dataModels []*po.UserRegEmail, batchSize int) error {
+func (s *userRegEmailDataRepo) CreateInBatches(ctx context.Context, dataModels []*po.UserRegEmail, batchSize int) error {
 	return s.createInBatches(ctx, s.dbConn, dataModels, batchSize)
 }
 
 // CreateInBatchesWithDBConn create many
-func (s *userRegEmailRepo) CreateInBatchesWithDBConn(ctx context.Context, dbConn *gorm.DB, dataModels []*po.UserRegEmail, batchSize int) error {
+func (s *userRegEmailDataRepo) CreateInBatchesWithDBConn(ctx context.Context, dbConn *gorm.DB, dataModels []*po.UserRegEmail, batchSize int) error {
 	return s.createInBatches(ctx, dbConn, dataModels, batchSize)
 }
 
 // =============== 更新 ===============
 
 // update update
-func (s *userRegEmailRepo) update(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegEmail) (err error) {
+func (s *userRegEmailDataRepo) update(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegEmail) (err error) {
 	err = dbConn.WithContext(ctx).
 		Table(s.UserRegEmailSchema.TableName()).
 		// Where(schemas.FieldId+" = ?", dataModel.Id).
@@ -119,17 +119,17 @@ func (s *userRegEmailRepo) update(ctx context.Context, dbConn *gorm.DB, dataMode
 }
 
 // Update update
-func (s *userRegEmailRepo) Update(ctx context.Context, dataModel *po.UserRegEmail) error {
+func (s *userRegEmailDataRepo) Update(ctx context.Context, dataModel *po.UserRegEmail) error {
 	return s.update(ctx, s.dbConn, dataModel)
 }
 
 // UpdateWithDBConn update
-func (s *userRegEmailRepo) UpdateWithDBConn(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegEmail) error {
+func (s *userRegEmailDataRepo) UpdateWithDBConn(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegEmail) error {
 	return s.update(ctx, dbConn, dataModel)
 }
 
 // existUpdate exist update
-func (s *userRegEmailRepo) existUpdate(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegEmail) (anotherModel *po.UserRegEmail, isNotFound bool, err error) {
+func (s *userRegEmailDataRepo) existUpdate(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegEmail) (anotherModel *po.UserRegEmail, isNotFound bool, err error) {
 	anotherModel = new(po.UserRegEmail)
 	err = dbConn.WithContext(ctx).
 		Table(s.UserRegEmailSchema.TableName()).
@@ -150,19 +150,19 @@ func (s *userRegEmailRepo) existUpdate(ctx context.Context, dbConn *gorm.DB, dat
 }
 
 // ExistUpdate exist update
-func (s *userRegEmailRepo) ExistUpdate(ctx context.Context, dataModel *po.UserRegEmail) (anotherModel *po.UserRegEmail, isNotFound bool, err error) {
+func (s *userRegEmailDataRepo) ExistUpdate(ctx context.Context, dataModel *po.UserRegEmail) (anotherModel *po.UserRegEmail, isNotFound bool, err error) {
 	return s.existUpdate(ctx, s.dbConn, dataModel)
 }
 
 // ExistUpdateWithDBConn exist update
-func (s *userRegEmailRepo) ExistUpdateWithDBConn(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegEmail) (anotherModel *po.UserRegEmail, isNotFound bool, err error) {
+func (s *userRegEmailDataRepo) ExistUpdateWithDBConn(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegEmail) (anotherModel *po.UserRegEmail, isNotFound bool, err error) {
 	return s.existUpdate(ctx, dbConn, dataModel)
 }
 
 // =============== query one : 查一个 ===============
 
 // queryOneById query one by id
-func (s *userRegEmailRepo) queryOneById(ctx context.Context, dbConn *gorm.DB, id interface{}) (dataModel *po.UserRegEmail, isNotFound bool, err error) {
+func (s *userRegEmailDataRepo) queryOneById(ctx context.Context, dbConn *gorm.DB, id interface{}) (dataModel *po.UserRegEmail, isNotFound bool, err error) {
 	dataModel = new(po.UserRegEmail)
 	err = dbConn.WithContext(ctx).
 		Table(s.UserRegEmailSchema.TableName()).
@@ -182,17 +182,37 @@ func (s *userRegEmailRepo) queryOneById(ctx context.Context, dbConn *gorm.DB, id
 }
 
 // QueryOneById query one by id
-func (s *userRegEmailRepo) QueryOneById(ctx context.Context, id interface{}) (dataModel *po.UserRegEmail, isNotFound bool, err error) {
+func (s *userRegEmailDataRepo) QueryOneById(ctx context.Context, id interface{}) (dataModel *po.UserRegEmail, isNotFound bool, err error) {
 	return s.queryOneById(ctx, s.dbConn, id)
 }
 
 // QueryOneByIdWithDBConn query one by id
-func (s *userRegEmailRepo) QueryOneByIdWithDBConn(ctx context.Context, dbConn *gorm.DB, id interface{}) (dataModel *po.UserRegEmail, isNotFound bool, err error) {
+func (s *userRegEmailDataRepo) QueryOneByIdWithDBConn(ctx context.Context, dbConn *gorm.DB, id interface{}) (dataModel *po.UserRegEmail, isNotFound bool, err error) {
 	return s.queryOneById(ctx, dbConn, id)
 }
 
+// QueryOneByUserEmail query one by id
+func (s *userRegEmailDataRepo) QueryOneByUserEmail(ctx context.Context, userEmail string) (dataModel *po.UserRegEmail, isNotFound bool, err error) {
+	dataModel = new(po.UserRegEmail)
+	err = s.dbConn.WithContext(ctx).
+		Table(s.UserRegEmailSchema.TableName()).
+		Where(schemas.FieldUserEmail+" = ?", userEmail).
+		First(dataModel).Error
+	if err != nil {
+		if gormpkg.IsErrRecordNotFound(err) {
+			err = nil
+			isNotFound = true
+		} else {
+			e := errorpkg.ErrorInternalServer("")
+			err = errorpkg.Wrap(e, err)
+		}
+		return
+	}
+	return
+}
+
 // queryOneByConditions query one by conditions
-func (s *userRegEmailRepo) queryOneByConditions(ctx context.Context, dbConn *gorm.DB, conditions map[string]interface{}) (dataModel *po.UserRegEmail, isNotFound bool, err error) {
+func (s *userRegEmailDataRepo) queryOneByConditions(ctx context.Context, dbConn *gorm.DB, conditions map[string]interface{}) (dataModel *po.UserRegEmail, isNotFound bool, err error) {
 	dataModel = new(po.UserRegEmail)
 	dbConn = dbConn.WithContext(ctx).Table(s.UserRegEmailSchema.TableName())
 	err = s.WhereConditions(dbConn, conditions).
@@ -211,19 +231,19 @@ func (s *userRegEmailRepo) queryOneByConditions(ctx context.Context, dbConn *gor
 }
 
 // QueryOneByConditions query one by conditions
-func (s *userRegEmailRepo) QueryOneByConditions(ctx context.Context, conditions map[string]interface{}) (dataModel *po.UserRegEmail, isNotFound bool, err error) {
+func (s *userRegEmailDataRepo) QueryOneByConditions(ctx context.Context, conditions map[string]interface{}) (dataModel *po.UserRegEmail, isNotFound bool, err error) {
 	return s.queryOneByConditions(ctx, s.dbConn, conditions)
 }
 
 // QueryOneByConditionsWithDBConn query one by conditions
-func (s *userRegEmailRepo) QueryOneByConditionsWithDBConn(ctx context.Context, dbConn *gorm.DB, conditions map[string]interface{}) (dataModel *po.UserRegEmail, isNotFound bool, err error) {
+func (s *userRegEmailDataRepo) QueryOneByConditionsWithDBConn(ctx context.Context, dbConn *gorm.DB, conditions map[string]interface{}) (dataModel *po.UserRegEmail, isNotFound bool, err error) {
 	return s.queryOneByConditions(ctx, dbConn, conditions)
 }
 
 // =============== query all : 查全部 ===============
 
 // queryAllByConditions query all by conditions
-func (s *userRegEmailRepo) queryAllByConditions(ctx context.Context, dbConn *gorm.DB, conditions map[string]interface{}) (dataModels []*po.UserRegEmail, err error) {
+func (s *userRegEmailDataRepo) queryAllByConditions(ctx context.Context, dbConn *gorm.DB, conditions map[string]interface{}) (dataModels []*po.UserRegEmail, err error) {
 	dbConn = dbConn.WithContext(ctx).Table(s.UserRegEmailSchema.TableName())
 	err = s.WhereConditions(dbConn, conditions).
 		Find(&dataModels).Error
@@ -236,19 +256,19 @@ func (s *userRegEmailRepo) queryAllByConditions(ctx context.Context, dbConn *gor
 }
 
 // QueryAllByConditions query all by conditions
-func (s *userRegEmailRepo) QueryAllByConditions(ctx context.Context, conditions map[string]interface{}) ([]*po.UserRegEmail, error) {
+func (s *userRegEmailDataRepo) QueryAllByConditions(ctx context.Context, conditions map[string]interface{}) ([]*po.UserRegEmail, error) {
 	return s.queryAllByConditions(ctx, s.dbConn, conditions)
 }
 
 // QueryAllByConditionsWithDBConn query all by conditions
-func (s *userRegEmailRepo) QueryAllByConditionsWithDBConn(ctx context.Context, dbConn *gorm.DB, conditions map[string]interface{}) ([]*po.UserRegEmail, error) {
+func (s *userRegEmailDataRepo) QueryAllByConditionsWithDBConn(ctx context.Context, dbConn *gorm.DB, conditions map[string]interface{}) ([]*po.UserRegEmail, error) {
 	return s.queryAllByConditions(ctx, dbConn, conditions)
 }
 
 // =============== list : 列表 ===============
 
 // list 列表
-func (s *userRegEmailRepo) list(ctx context.Context, dbConn *gorm.DB, conditions map[string]interface{}, paginatorArgs *gormpkg.PaginatorArgs) (dataModels []*po.UserRegEmail, recordCount int64, err error) {
+func (s *userRegEmailDataRepo) list(ctx context.Context, dbConn *gorm.DB, conditions map[string]interface{}, paginatorArgs *gormpkg.PaginatorArgs) (dataModels []*po.UserRegEmail, recordCount int64, err error) {
 	// query where
 	dbConn = dbConn.WithContext(ctx).Table(s.UserRegEmailSchema.TableName())
 	dbConn = s.WhereConditions(dbConn, conditions)
@@ -276,19 +296,19 @@ func (s *userRegEmailRepo) list(ctx context.Context, dbConn *gorm.DB, conditions
 }
 
 // List 列表
-func (s *userRegEmailRepo) List(ctx context.Context, conditions map[string]interface{}, paginatorArgs *gormpkg.PaginatorArgs) ([]*po.UserRegEmail, int64, error) {
+func (s *userRegEmailDataRepo) List(ctx context.Context, conditions map[string]interface{}, paginatorArgs *gormpkg.PaginatorArgs) ([]*po.UserRegEmail, int64, error) {
 	return s.list(ctx, s.dbConn, conditions, paginatorArgs)
 }
 
 // ListWithDBConn 列表
-func (s *userRegEmailRepo) ListWithDBConn(ctx context.Context, dbConn *gorm.DB, conditions map[string]interface{}, paginatorArgs *gormpkg.PaginatorArgs) ([]*po.UserRegEmail, int64, error) {
+func (s *userRegEmailDataRepo) ListWithDBConn(ctx context.Context, dbConn *gorm.DB, conditions map[string]interface{}, paginatorArgs *gormpkg.PaginatorArgs) ([]*po.UserRegEmail, int64, error) {
 	return s.list(ctx, dbConn, conditions, paginatorArgs)
 }
 
 // =============== delete : 删除 ===============
 
 // delete delete one
-func (s *userRegEmailRepo) delete(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegEmail) (err error) {
+func (s *userRegEmailDataRepo) delete(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegEmail) (err error) {
 	err = dbConn.WithContext(ctx).
 		Table(s.UserRegEmailSchema.TableName()).
 		Where(schemas.FieldId+" = ?", dataModel.Id).
@@ -302,17 +322,17 @@ func (s *userRegEmailRepo) delete(ctx context.Context, dbConn *gorm.DB, dataMode
 }
 
 // Delete delete one
-func (s *userRegEmailRepo) Delete(ctx context.Context, dataModel *po.UserRegEmail) error {
+func (s *userRegEmailDataRepo) Delete(ctx context.Context, dataModel *po.UserRegEmail) error {
 	return s.delete(ctx, s.dbConn, dataModel)
 }
 
 // DeleteWithDBConn delete one
-func (s *userRegEmailRepo) DeleteWithDBConn(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegEmail) error {
+func (s *userRegEmailDataRepo) DeleteWithDBConn(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegEmail) error {
 	return s.delete(ctx, dbConn, dataModel)
 }
 
 // deleteByIds delete by ids
-func (s *userRegEmailRepo) deleteByIds(ctx context.Context, dbConn *gorm.DB, ids interface{}) (err error) {
+func (s *userRegEmailDataRepo) deleteByIds(ctx context.Context, dbConn *gorm.DB, ids interface{}) (err error) {
 	err = dbConn.WithContext(ctx).
 		Table(s.UserRegEmailSchema.TableName()).
 		Where(schemas.FieldId+" in (?)", ids).
@@ -326,12 +346,12 @@ func (s *userRegEmailRepo) deleteByIds(ctx context.Context, dbConn *gorm.DB, ids
 }
 
 // DeleteByIds delete by ids
-func (s *userRegEmailRepo) DeleteByIds(ctx context.Context, ids interface{}) error {
+func (s *userRegEmailDataRepo) DeleteByIds(ctx context.Context, ids interface{}) error {
 	return s.deleteByIds(ctx, s.dbConn, ids)
 }
 
 // DeleteByIdsWithDBConn delete by ids
-func (s *userRegEmailRepo) DeleteByIdsWithDBConn(ctx context.Context, dbConn *gorm.DB, ids interface{}) error {
+func (s *userRegEmailDataRepo) DeleteByIdsWithDBConn(ctx context.Context, dbConn *gorm.DB, ids interface{}) error {
 	return s.deleteByIds(ctx, dbConn, ids)
 }
 
@@ -421,7 +441,7 @@ func (s *UserRegEmailSlice) ConflictActionForPostgres() (req *gormpkg.BatchInser
 }
 
 // insert 批量插入
-func (s *userRegEmailRepo) insert(ctx context.Context, dbConn *gorm.DB, dataModels UserRegEmailSlice) error {
+func (s *userRegEmailDataRepo) insert(ctx context.Context, dbConn *gorm.DB, dataModels UserRegEmailSlice) error {
 	err := gormpkg.BatchInsertWithContext(ctx, dbConn, &dataModels)
 	if err != nil {
 		e := errorpkg.ErrorInternalServer("")
@@ -432,19 +452,19 @@ func (s *userRegEmailRepo) insert(ctx context.Context, dbConn *gorm.DB, dataMode
 }
 
 // Insert 批量插入
-func (s *userRegEmailRepo) Insert(ctx context.Context, dataModels []*po.UserRegEmail) error {
+func (s *userRegEmailDataRepo) Insert(ctx context.Context, dataModels []*po.UserRegEmail) error {
 	return s.insert(ctx, s.dbConn, dataModels)
 }
 
 // InsertWithDBConn 批量插入
-func (s *userRegEmailRepo) InsertWithDBConn(ctx context.Context, dbConn *gorm.DB, dataModels []*po.UserRegEmail) error {
+func (s *userRegEmailDataRepo) InsertWithDBConn(ctx context.Context, dbConn *gorm.DB, dataModels []*po.UserRegEmail) error {
 	return s.insert(ctx, dbConn, dataModels)
 }
 
 // =============== conditions : 条件 ===============
 
 // WhereConditions orm where
-func (s *userRegEmailRepo) WhereConditions(dbConn *gorm.DB, conditions map[string]interface{}) *gorm.DB {
+func (s *userRegEmailDataRepo) WhereConditions(dbConn *gorm.DB, conditions map[string]interface{}) *gorm.DB {
 
 	// table name
 	// tableName := s.UserRegEmailSchema.TableName()
@@ -485,7 +505,7 @@ func (s *userRegEmailRepo) WhereConditions(dbConn *gorm.DB, conditions map[strin
 }
 
 // UpdateColumns update columns
-func (s *userRegEmailRepo) UpdateColumns(conditions map[string]interface{}) map[string]interface{} {
+func (s *userRegEmailDataRepo) UpdateColumns(conditions map[string]interface{}) map[string]interface{} {
 
 	// update columns
 	updateColumns := make(map[string]interface{})

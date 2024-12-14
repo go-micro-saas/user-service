@@ -14,15 +14,15 @@ import (
 	"strings"
 )
 
-// userRegPhoneRepo repo
-type userRegPhoneRepo struct {
+// userRegPhoneDataRepo repo
+type userRegPhoneDataRepo struct {
 	dbConn             *gorm.DB             // *gorm.DB
 	UserRegPhoneSchema schemas.UserRegPhone // UserRegPhone
 }
 
 // NewUserRegPhoneRepo new data repo
 func NewUserRegPhoneRepo(dbConn *gorm.DB) datarepos.UserRegPhoneDataRepo {
-	return &userRegPhoneRepo{
+	return &userRegPhoneDataRepo{
 		dbConn: dbConn,
 	}
 }
@@ -30,7 +30,7 @@ func NewUserRegPhoneRepo(dbConn *gorm.DB) datarepos.UserRegPhoneDataRepo {
 // =============== 创建 ===============
 
 // create insert one
-func (s *userRegPhoneRepo) create(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegPhone) (err error) {
+func (s *userRegPhoneDataRepo) create(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegPhone) (err error) {
 	err = dbConn.WithContext(ctx).
 		Table(s.UserRegPhoneSchema.TableName()).
 		Create(dataModel).Error
@@ -42,17 +42,17 @@ func (s *userRegPhoneRepo) create(ctx context.Context, dbConn *gorm.DB, dataMode
 }
 
 // Create insert one
-func (s *userRegPhoneRepo) Create(ctx context.Context, dataModel *po.UserRegPhone) error {
+func (s *userRegPhoneDataRepo) Create(ctx context.Context, dataModel *po.UserRegPhone) error {
 	return s.create(ctx, s.dbConn, dataModel)
 }
 
 // CreateWithDBConn create
-func (s *userRegPhoneRepo) CreateWithDBConn(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegPhone) error {
+func (s *userRegPhoneDataRepo) CreateWithDBConn(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegPhone) error {
 	return s.create(ctx, dbConn, dataModel)
 }
 
 // existCreate exist create
-func (s *userRegPhoneRepo) existCreate(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegPhone) (anotherModel *po.UserRegPhone, isNotFound bool, err error) {
+func (s *userRegPhoneDataRepo) existCreate(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegPhone) (anotherModel *po.UserRegPhone, isNotFound bool, err error) {
 	anotherModel = new(po.UserRegPhone)
 	err = dbConn.WithContext(ctx).
 		Table(s.UserRegPhoneSchema.TableName()).
@@ -72,17 +72,17 @@ func (s *userRegPhoneRepo) existCreate(ctx context.Context, dbConn *gorm.DB, dat
 }
 
 // ExistCreate exist create
-func (s *userRegPhoneRepo) ExistCreate(ctx context.Context, dataModel *po.UserRegPhone) (anotherModel *po.UserRegPhone, isNotFound bool, err error) {
+func (s *userRegPhoneDataRepo) ExistCreate(ctx context.Context, dataModel *po.UserRegPhone) (anotherModel *po.UserRegPhone, isNotFound bool, err error) {
 	return s.existCreate(ctx, s.dbConn, dataModel)
 }
 
 // ExistCreateWithDBConn exist create
-func (s *userRegPhoneRepo) ExistCreateWithDBConn(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegPhone) (anotherModel *po.UserRegPhone, isNotFound bool, err error) {
+func (s *userRegPhoneDataRepo) ExistCreateWithDBConn(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegPhone) (anotherModel *po.UserRegPhone, isNotFound bool, err error) {
 	return s.existCreate(ctx, dbConn, dataModel)
 }
 
 // createInBatches create many
-func (s *userRegPhoneRepo) createInBatches(ctx context.Context, dbConn *gorm.DB, dataModels []*po.UserRegPhone, batchSize int) (err error) {
+func (s *userRegPhoneDataRepo) createInBatches(ctx context.Context, dbConn *gorm.DB, dataModels []*po.UserRegPhone, batchSize int) (err error) {
 	err = dbConn.WithContext(ctx).
 		Table(s.UserRegPhoneSchema.TableName()).
 		CreateInBatches(dataModels, batchSize).Error
@@ -94,19 +94,19 @@ func (s *userRegPhoneRepo) createInBatches(ctx context.Context, dbConn *gorm.DB,
 }
 
 // CreateInBatches create many
-func (s *userRegPhoneRepo) CreateInBatches(ctx context.Context, dataModels []*po.UserRegPhone, batchSize int) error {
+func (s *userRegPhoneDataRepo) CreateInBatches(ctx context.Context, dataModels []*po.UserRegPhone, batchSize int) error {
 	return s.createInBatches(ctx, s.dbConn, dataModels, batchSize)
 }
 
 // CreateInBatchesWithDBConn create many
-func (s *userRegPhoneRepo) CreateInBatchesWithDBConn(ctx context.Context, dbConn *gorm.DB, dataModels []*po.UserRegPhone, batchSize int) error {
+func (s *userRegPhoneDataRepo) CreateInBatchesWithDBConn(ctx context.Context, dbConn *gorm.DB, dataModels []*po.UserRegPhone, batchSize int) error {
 	return s.createInBatches(ctx, dbConn, dataModels, batchSize)
 }
 
 // =============== 更新 ===============
 
 // update update
-func (s *userRegPhoneRepo) update(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegPhone) (err error) {
+func (s *userRegPhoneDataRepo) update(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegPhone) (err error) {
 	err = dbConn.WithContext(ctx).
 		Table(s.UserRegPhoneSchema.TableName()).
 		// Where(schemas.FieldId+" = ?", dataModel.Id).
@@ -119,17 +119,17 @@ func (s *userRegPhoneRepo) update(ctx context.Context, dbConn *gorm.DB, dataMode
 }
 
 // Update update
-func (s *userRegPhoneRepo) Update(ctx context.Context, dataModel *po.UserRegPhone) error {
+func (s *userRegPhoneDataRepo) Update(ctx context.Context, dataModel *po.UserRegPhone) error {
 	return s.update(ctx, s.dbConn, dataModel)
 }
 
 // UpdateWithDBConn update
-func (s *userRegPhoneRepo) UpdateWithDBConn(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegPhone) error {
+func (s *userRegPhoneDataRepo) UpdateWithDBConn(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegPhone) error {
 	return s.update(ctx, dbConn, dataModel)
 }
 
 // existUpdate exist update
-func (s *userRegPhoneRepo) existUpdate(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegPhone) (anotherModel *po.UserRegPhone, isNotFound bool, err error) {
+func (s *userRegPhoneDataRepo) existUpdate(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegPhone) (anotherModel *po.UserRegPhone, isNotFound bool, err error) {
 	anotherModel = new(po.UserRegPhone)
 	err = dbConn.WithContext(ctx).
 		Table(s.UserRegPhoneSchema.TableName()).
@@ -150,19 +150,19 @@ func (s *userRegPhoneRepo) existUpdate(ctx context.Context, dbConn *gorm.DB, dat
 }
 
 // ExistUpdate exist update
-func (s *userRegPhoneRepo) ExistUpdate(ctx context.Context, dataModel *po.UserRegPhone) (anotherModel *po.UserRegPhone, isNotFound bool, err error) {
+func (s *userRegPhoneDataRepo) ExistUpdate(ctx context.Context, dataModel *po.UserRegPhone) (anotherModel *po.UserRegPhone, isNotFound bool, err error) {
 	return s.existUpdate(ctx, s.dbConn, dataModel)
 }
 
 // ExistUpdateWithDBConn exist update
-func (s *userRegPhoneRepo) ExistUpdateWithDBConn(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegPhone) (anotherModel *po.UserRegPhone, isNotFound bool, err error) {
+func (s *userRegPhoneDataRepo) ExistUpdateWithDBConn(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegPhone) (anotherModel *po.UserRegPhone, isNotFound bool, err error) {
 	return s.existUpdate(ctx, dbConn, dataModel)
 }
 
 // =============== query one : 查一个 ===============
 
 // queryOneById query one by id
-func (s *userRegPhoneRepo) queryOneById(ctx context.Context, dbConn *gorm.DB, id interface{}) (dataModel *po.UserRegPhone, isNotFound bool, err error) {
+func (s *userRegPhoneDataRepo) queryOneById(ctx context.Context, dbConn *gorm.DB, id interface{}) (dataModel *po.UserRegPhone, isNotFound bool, err error) {
 	dataModel = new(po.UserRegPhone)
 	err = dbConn.WithContext(ctx).
 		Table(s.UserRegPhoneSchema.TableName()).
@@ -182,17 +182,17 @@ func (s *userRegPhoneRepo) queryOneById(ctx context.Context, dbConn *gorm.DB, id
 }
 
 // QueryOneById query one by id
-func (s *userRegPhoneRepo) QueryOneById(ctx context.Context, id interface{}) (dataModel *po.UserRegPhone, isNotFound bool, err error) {
+func (s *userRegPhoneDataRepo) QueryOneById(ctx context.Context, id interface{}) (dataModel *po.UserRegPhone, isNotFound bool, err error) {
 	return s.queryOneById(ctx, s.dbConn, id)
 }
 
 // QueryOneByIdWithDBConn query one by id
-func (s *userRegPhoneRepo) QueryOneByIdWithDBConn(ctx context.Context, dbConn *gorm.DB, id interface{}) (dataModel *po.UserRegPhone, isNotFound bool, err error) {
+func (s *userRegPhoneDataRepo) QueryOneByIdWithDBConn(ctx context.Context, dbConn *gorm.DB, id interface{}) (dataModel *po.UserRegPhone, isNotFound bool, err error) {
 	return s.queryOneById(ctx, dbConn, id)
 }
 
 // queryOneByConditions query one by conditions
-func (s *userRegPhoneRepo) queryOneByConditions(ctx context.Context, dbConn *gorm.DB, conditions map[string]interface{}) (dataModel *po.UserRegPhone, isNotFound bool, err error) {
+func (s *userRegPhoneDataRepo) queryOneByConditions(ctx context.Context, dbConn *gorm.DB, conditions map[string]interface{}) (dataModel *po.UserRegPhone, isNotFound bool, err error) {
 	dataModel = new(po.UserRegPhone)
 	dbConn = dbConn.WithContext(ctx).Table(s.UserRegPhoneSchema.TableName())
 	err = s.WhereConditions(dbConn, conditions).
@@ -211,19 +211,19 @@ func (s *userRegPhoneRepo) queryOneByConditions(ctx context.Context, dbConn *gor
 }
 
 // QueryOneByConditions query one by conditions
-func (s *userRegPhoneRepo) QueryOneByConditions(ctx context.Context, conditions map[string]interface{}) (dataModel *po.UserRegPhone, isNotFound bool, err error) {
+func (s *userRegPhoneDataRepo) QueryOneByConditions(ctx context.Context, conditions map[string]interface{}) (dataModel *po.UserRegPhone, isNotFound bool, err error) {
 	return s.queryOneByConditions(ctx, s.dbConn, conditions)
 }
 
 // QueryOneByConditionsWithDBConn query one by conditions
-func (s *userRegPhoneRepo) QueryOneByConditionsWithDBConn(ctx context.Context, dbConn *gorm.DB, conditions map[string]interface{}) (dataModel *po.UserRegPhone, isNotFound bool, err error) {
+func (s *userRegPhoneDataRepo) QueryOneByConditionsWithDBConn(ctx context.Context, dbConn *gorm.DB, conditions map[string]interface{}) (dataModel *po.UserRegPhone, isNotFound bool, err error) {
 	return s.queryOneByConditions(ctx, dbConn, conditions)
 }
 
 // =============== query all : 查全部 ===============
 
 // queryAllByConditions query all by conditions
-func (s *userRegPhoneRepo) queryAllByConditions(ctx context.Context, dbConn *gorm.DB, conditions map[string]interface{}) (dataModels []*po.UserRegPhone, err error) {
+func (s *userRegPhoneDataRepo) queryAllByConditions(ctx context.Context, dbConn *gorm.DB, conditions map[string]interface{}) (dataModels []*po.UserRegPhone, err error) {
 	dbConn = dbConn.WithContext(ctx).Table(s.UserRegPhoneSchema.TableName())
 	err = s.WhereConditions(dbConn, conditions).
 		Find(&dataModels).Error
@@ -236,19 +236,19 @@ func (s *userRegPhoneRepo) queryAllByConditions(ctx context.Context, dbConn *gor
 }
 
 // QueryAllByConditions query all by conditions
-func (s *userRegPhoneRepo) QueryAllByConditions(ctx context.Context, conditions map[string]interface{}) ([]*po.UserRegPhone, error) {
+func (s *userRegPhoneDataRepo) QueryAllByConditions(ctx context.Context, conditions map[string]interface{}) ([]*po.UserRegPhone, error) {
 	return s.queryAllByConditions(ctx, s.dbConn, conditions)
 }
 
 // QueryAllByConditionsWithDBConn query all by conditions
-func (s *userRegPhoneRepo) QueryAllByConditionsWithDBConn(ctx context.Context, dbConn *gorm.DB, conditions map[string]interface{}) ([]*po.UserRegPhone, error) {
+func (s *userRegPhoneDataRepo) QueryAllByConditionsWithDBConn(ctx context.Context, dbConn *gorm.DB, conditions map[string]interface{}) ([]*po.UserRegPhone, error) {
 	return s.queryAllByConditions(ctx, dbConn, conditions)
 }
 
 // =============== list : 列表 ===============
 
 // list 列表
-func (s *userRegPhoneRepo) list(ctx context.Context, dbConn *gorm.DB, conditions map[string]interface{}, paginatorArgs *gormpkg.PaginatorArgs) (dataModels []*po.UserRegPhone, recordCount int64, err error) {
+func (s *userRegPhoneDataRepo) list(ctx context.Context, dbConn *gorm.DB, conditions map[string]interface{}, paginatorArgs *gormpkg.PaginatorArgs) (dataModels []*po.UserRegPhone, recordCount int64, err error) {
 	// query where
 	dbConn = dbConn.WithContext(ctx).Table(s.UserRegPhoneSchema.TableName())
 	dbConn = s.WhereConditions(dbConn, conditions)
@@ -276,19 +276,19 @@ func (s *userRegPhoneRepo) list(ctx context.Context, dbConn *gorm.DB, conditions
 }
 
 // List 列表
-func (s *userRegPhoneRepo) List(ctx context.Context, conditions map[string]interface{}, paginatorArgs *gormpkg.PaginatorArgs) ([]*po.UserRegPhone, int64, error) {
+func (s *userRegPhoneDataRepo) List(ctx context.Context, conditions map[string]interface{}, paginatorArgs *gormpkg.PaginatorArgs) ([]*po.UserRegPhone, int64, error) {
 	return s.list(ctx, s.dbConn, conditions, paginatorArgs)
 }
 
 // ListWithDBConn 列表
-func (s *userRegPhoneRepo) ListWithDBConn(ctx context.Context, dbConn *gorm.DB, conditions map[string]interface{}, paginatorArgs *gormpkg.PaginatorArgs) ([]*po.UserRegPhone, int64, error) {
+func (s *userRegPhoneDataRepo) ListWithDBConn(ctx context.Context, dbConn *gorm.DB, conditions map[string]interface{}, paginatorArgs *gormpkg.PaginatorArgs) ([]*po.UserRegPhone, int64, error) {
 	return s.list(ctx, dbConn, conditions, paginatorArgs)
 }
 
 // =============== delete : 删除 ===============
 
 // delete delete one
-func (s *userRegPhoneRepo) delete(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegPhone) (err error) {
+func (s *userRegPhoneDataRepo) delete(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegPhone) (err error) {
 	err = dbConn.WithContext(ctx).
 		Table(s.UserRegPhoneSchema.TableName()).
 		Where(schemas.FieldId+" = ?", dataModel.Id).
@@ -302,17 +302,17 @@ func (s *userRegPhoneRepo) delete(ctx context.Context, dbConn *gorm.DB, dataMode
 }
 
 // Delete delete one
-func (s *userRegPhoneRepo) Delete(ctx context.Context, dataModel *po.UserRegPhone) error {
+func (s *userRegPhoneDataRepo) Delete(ctx context.Context, dataModel *po.UserRegPhone) error {
 	return s.delete(ctx, s.dbConn, dataModel)
 }
 
 // DeleteWithDBConn delete one
-func (s *userRegPhoneRepo) DeleteWithDBConn(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegPhone) error {
+func (s *userRegPhoneDataRepo) DeleteWithDBConn(ctx context.Context, dbConn *gorm.DB, dataModel *po.UserRegPhone) error {
 	return s.delete(ctx, dbConn, dataModel)
 }
 
 // deleteByIds delete by ids
-func (s *userRegPhoneRepo) deleteByIds(ctx context.Context, dbConn *gorm.DB, ids interface{}) (err error) {
+func (s *userRegPhoneDataRepo) deleteByIds(ctx context.Context, dbConn *gorm.DB, ids interface{}) (err error) {
 	err = dbConn.WithContext(ctx).
 		Table(s.UserRegPhoneSchema.TableName()).
 		Where(schemas.FieldId+" in (?)", ids).
@@ -326,12 +326,12 @@ func (s *userRegPhoneRepo) deleteByIds(ctx context.Context, dbConn *gorm.DB, ids
 }
 
 // DeleteByIds delete by ids
-func (s *userRegPhoneRepo) DeleteByIds(ctx context.Context, ids interface{}) error {
+func (s *userRegPhoneDataRepo) DeleteByIds(ctx context.Context, ids interface{}) error {
 	return s.deleteByIds(ctx, s.dbConn, ids)
 }
 
 // DeleteByIdsWithDBConn delete by ids
-func (s *userRegPhoneRepo) DeleteByIdsWithDBConn(ctx context.Context, dbConn *gorm.DB, ids interface{}) error {
+func (s *userRegPhoneDataRepo) DeleteByIdsWithDBConn(ctx context.Context, dbConn *gorm.DB, ids interface{}) error {
 	return s.deleteByIds(ctx, dbConn, ids)
 }
 
@@ -421,7 +421,7 @@ func (s *UserRegPhoneSlice) ConflictActionForPostgres() (req *gormpkg.BatchInser
 }
 
 // insert 批量插入
-func (s *userRegPhoneRepo) insert(ctx context.Context, dbConn *gorm.DB, dataModels UserRegPhoneSlice) error {
+func (s *userRegPhoneDataRepo) insert(ctx context.Context, dbConn *gorm.DB, dataModels UserRegPhoneSlice) error {
 	err := gormpkg.BatchInsertWithContext(ctx, dbConn, &dataModels)
 	if err != nil {
 		e := errorpkg.ErrorInternalServer("")
@@ -432,19 +432,19 @@ func (s *userRegPhoneRepo) insert(ctx context.Context, dbConn *gorm.DB, dataMode
 }
 
 // Insert 批量插入
-func (s *userRegPhoneRepo) Insert(ctx context.Context, dataModels []*po.UserRegPhone) error {
+func (s *userRegPhoneDataRepo) Insert(ctx context.Context, dataModels []*po.UserRegPhone) error {
 	return s.insert(ctx, s.dbConn, dataModels)
 }
 
 // InsertWithDBConn 批量插入
-func (s *userRegPhoneRepo) InsertWithDBConn(ctx context.Context, dbConn *gorm.DB, dataModels []*po.UserRegPhone) error {
+func (s *userRegPhoneDataRepo) InsertWithDBConn(ctx context.Context, dbConn *gorm.DB, dataModels []*po.UserRegPhone) error {
 	return s.insert(ctx, dbConn, dataModels)
 }
 
 // =============== conditions : 条件 ===============
 
 // WhereConditions orm where
-func (s *userRegPhoneRepo) WhereConditions(dbConn *gorm.DB, conditions map[string]interface{}) *gorm.DB {
+func (s *userRegPhoneDataRepo) WhereConditions(dbConn *gorm.DB, conditions map[string]interface{}) *gorm.DB {
 
 	// table name
 	// tableName := s.UserRegPhoneSchema.TableName()
@@ -485,7 +485,7 @@ func (s *userRegPhoneRepo) WhereConditions(dbConn *gorm.DB, conditions map[strin
 }
 
 // UpdateColumns update columns
-func (s *userRegPhoneRepo) UpdateColumns(conditions map[string]interface{}) map[string]interface{} {
+func (s *userRegPhoneDataRepo) UpdateColumns(conditions map[string]interface{}) map[string]interface{} {
 
 	// update columns
 	updateColumns := make(map[string]interface{})

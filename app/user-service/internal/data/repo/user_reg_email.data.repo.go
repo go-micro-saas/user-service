@@ -17,6 +17,7 @@ type UserRegEmailDataRepo interface {
 	Update(ctx context.Context, dataModel *po.UserRegEmail) error
 	ExistUpdate(ctx context.Context, dataModel *po.UserRegEmail) (anotherModel *po.UserRegEmail, isNotFound bool, err error)
 	QueryOneById(ctx context.Context, id interface{}) (dataModel *po.UserRegEmail, isNotFound bool, err error)
+	QueryOneByUserEmail(ctx context.Context, userEmail string) (dataModel *po.UserRegEmail, isNotFound bool, err error)
 	QueryOneByConditions(ctx context.Context, conditions map[string]interface{}) (dataModel *po.UserRegEmail, isNotFound bool, err error)
 	QueryAllByConditions(ctx context.Context, conditions map[string]interface{}) (dataModels []*po.UserRegEmail, err error)
 	List(ctx context.Context, conditions map[string]interface{}, paginatorArgs *gormpkg.PaginatorArgs) (dataModels []*po.UserRegEmail, totalNumber int64, err error)
