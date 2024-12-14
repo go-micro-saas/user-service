@@ -6,6 +6,6 @@
 
 go install github.com/google/wire/cmd/wire@latest
 
-wire ./app/uuid-service/cmd/uuid-service/export
+wire ./app/user-service/cmd/user-service/export
 
 ```
