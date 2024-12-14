@@ -80,15 +80,7 @@ func (m *User) validate(all bool) error {
 
 	// no validation rules for UserGender
 
-	// no validation rules for RegisterType
-
 	// no validation rules for UserStatus
-
-	// no validation rules for DisableTime
-
-	// no validation rules for BlacklistTime
-
-	// no validation rules for PasswordHash
 
 	if len(errors) > 0 {
 		return UserMultiError(errors)

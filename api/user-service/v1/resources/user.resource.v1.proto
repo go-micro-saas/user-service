@@ -33,16 +33,16 @@ message User {
   string user_avatar = 9;
   // user_gender 性别；0：INIT，1：MALE，2：FEMALE，3：SECRET
   enumv1.UserGenderEnum.UserGender user_gender = 10;
-  // register_type 注册类型；0：INIT，1：EMAIL，2：MOBILE，3：。。。参考ENUM定义
-  enumv1.UserRegisterTypeEnum.UserRegisterType register_type = 11;
   // user_status 状态；0：INIT，1：ENABLE，2：DISABLE，3：WHITELIST，4：BLACKLIST，5：DELETED
   enumv1.UserStatusEnum.UserStatus user_status = 12;
+  // register_type 注册类型；0：INIT，1：EMAIL，2：MOBILE，3：。。。参考ENUM定义
+  // enumv1.UserRegisterTypeEnum.UserRegisterType register_type = 11;
   // disable_time 禁用时间
-  uint64 disable_time = 13;
+  //  uint64 disable_time = 13;
   // blacklist_time 黑名单时间
-  uint64 blacklist_time = 14;
+  //  uint64 blacklist_time = 14;
   // password_hash 密码HASH
-  string password_hash = 15;
+  //  string password_hash = 15;
 }
 
 // UserSaveReq save
