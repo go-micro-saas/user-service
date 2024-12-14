@@ -53,7 +53,7 @@ func (s *userAuthBiz) LoginByEmail(ctx context.Context, in *resourcev1.LoginByEm
 // LoginByPhone ...
 func (s *userAuthBiz) LoginByPhone(ctx context.Context, in *resourcev1.LoginByPhoneReq) (*po.User, *bo.SignTokenResp, error) {
 	// 注册邮箱
-	regPhoneModel, err := s.CheckAndGetByRegisterEmail(ctx, in.Phone)
+	regPhoneModel, err := s.CheckAndGetByRegisterPhone(ctx, in.Phone)
 	if err != nil {
 		return nil, nil, err
 	}

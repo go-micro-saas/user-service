@@ -16,7 +16,7 @@ type UserRegPhone struct {
 	Id          uint64    `gorm:"column:id;primaryKey" json:"id"`          // ID
 	CreatedTime time.Time `gorm:"column:created_time" json:"created_time"` // 创建时间
 	UpdatedTime time.Time `gorm:"column:updated_time" json:"updated_time"` // 最后修改时间
-	DeletedTime int64     `gorm:"column:deleted_time" json:"deleted_time"` // 删除时间
-	UserId      int64     `gorm:"column:user_id" json:"user_id"`           // uid
+	DeletedTime uint64    `gorm:"column:deleted_time" json:"deleted_time"` // 删除时间
+	UserId      uint64    `gorm:"column:user_id" json:"user_id"`           // uid
 	UserPhone   string    `gorm:"column:user_phone" json:"user_phone"`     // 手机
 }
