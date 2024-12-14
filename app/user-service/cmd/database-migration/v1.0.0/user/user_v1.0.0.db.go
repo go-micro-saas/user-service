@@ -2,6 +2,7 @@ package dbv1_0_0_user
 
 import (
 	"context"
+	schemas "github.com/go-micro-saas/user-service/app/user-service/internal/data/schema"
 	userschemas "github.com/go-micro-saas/user-service/app/user-service/internal/data/schema/uid_user"
 	emailschemas "github.com/go-micro-saas/user-service/app/user-service/internal/data/schema/uid_user_reg_email"
 	phoneschemas "github.com/go-micro-saas/user-service/app/user-service/internal/data/schema/uid_user_reg_phone"
@@ -45,6 +46,12 @@ func (s *Migrate) Upgrade(ctx context.Context) error {
 	}
 	// 创建表
 	mr = emailschemas.UserRegEmailSchema.CreateTableMigrator(migrator)
+	if err := s.migrateRepo.RunMigratorUp(ctx, mr); err != nil {
+		e := errorpkg.ErrorInternalError("")
+		return errorpkg.Wrap(e, err)
+	}
+	// 初始化用户
+	mr = schemas.NewUserDB().InitializeUser(s.dbConn)
 	if err := s.migrateRepo.RunMigratorUp(ctx, mr); err != nil {
 		e := errorpkg.ErrorInternalError("")
 		return errorpkg.Wrap(e, err)
