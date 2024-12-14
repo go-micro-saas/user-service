@@ -21,6 +21,7 @@ var _ = binding.EncodeURL
 const _ = http.SupportPackageIsVersion1
 
 const OperationSrvUserAuthV1LoginByEmail = "/saas.api.user.servicev1.SrvUserAuthV1/LoginByEmail"
+const OperationSrvUserAuthV1LoginByPhone = "/saas.api.user.servicev1.SrvUserAuthV1/LoginByPhone"
 const OperationSrvUserAuthV1OpenApiLogin = "/saas.api.user.servicev1.SrvUserAuthV1/OpenApiLogin"
 const OperationSrvUserAuthV1Ping = "/saas.api.user.servicev1.SrvUserAuthV1/Ping"
 const OperationSrvUserAuthV1RefreshToken = "/saas.api.user.servicev1.SrvUserAuthV1/RefreshToken"
@@ -28,6 +29,8 @@ const OperationSrvUserAuthV1RefreshToken = "/saas.api.user.servicev1.SrvUserAuth
 type SrvUserAuthV1HTTPServer interface {
 	// LoginByEmail 身份验证-Email登录
 	LoginByEmail(context.Context, *resources.LoginByEmailReq) (*resources.LoginResp, error)
+	// LoginByPhone 身份验证-手机登录
+	LoginByPhone(context.Context, *resources.LoginByPhoneReq) (*resources.LoginResp, error)
 	// OpenApiLogin 身份验证-开发平台登录
 	OpenApiLogin(context.Context, *resources.OpenApiLoginReq) (*resources.LoginResp, error)
 	// Ping 身份验证-Ping测试
@@ -41,6 +44,7 @@ func RegisterSrvUserAuthV1HTTPServer(s *http.Server, srv SrvUserAuthV1HTTPServer
 	r.GET("/api/v1/user/auth/ping", _SrvUserAuthV1_Ping0_HTTP_Handler(srv))
 	r.POST("/api/v1/user/auth/refresh-token", _SrvUserAuthV1_RefreshToken0_HTTP_Handler(srv))
 	r.POST("/api/v1/user/auth/login-by-email", _SrvUserAuthV1_LoginByEmail0_HTTP_Handler(srv))
+	r.POST("/api/v1/user/auth/login-by-phone", _SrvUserAuthV1_LoginByPhone0_HTTP_Handler(srv))
 	r.POST("/api/v1/user/open-api/login", _SrvUserAuthV1_OpenApiLogin0_HTTP_Handler(srv))
 }
 
@@ -107,6 +111,28 @@ func _SrvUserAuthV1_LoginByEmail0_HTTP_Handler(srv SrvUserAuthV1HTTPServer) func
 	}
 }
 
+func _SrvUserAuthV1_LoginByPhone0_HTTP_Handler(srv SrvUserAuthV1HTTPServer) func(ctx http.Context) error {
+	return func(ctx http.Context) error {
+		var in resources.LoginByPhoneReq
+		if err := ctx.Bind(&in); err != nil {
+			return err
+		}
+		if err := ctx.BindQuery(&in); err != nil {
+			return err
+		}
+		http.SetOperation(ctx, OperationSrvUserAuthV1LoginByPhone)
+		h := ctx.Middleware(func(ctx context.Context, req interface{}) (interface{}, error) {
+			return srv.LoginByPhone(ctx, req.(*resources.LoginByPhoneReq))
+		})
+		out, err := h(ctx, &in)
+		if err != nil {
+			return err
+		}
+		reply := out.(*resources.LoginResp)
+		return ctx.Result(200, reply)
+	}
+}
+
 func _SrvUserAuthV1_OpenApiLogin0_HTTP_Handler(srv SrvUserAuthV1HTTPServer) func(ctx http.Context) error {
 	return func(ctx http.Context) error {
 		var in resources.OpenApiLoginReq
@@ -131,6 +157,7 @@ func _SrvUserAuthV1_OpenApiLogin0_HTTP_Handler(srv SrvUserAuthV1HTTPServer) func
 
 type SrvUserAuthV1HTTPClient interface {
 	LoginByEmail(ctx context.Context, req *resources.LoginByEmailReq, opts ...http.CallOption) (rsp *resources.LoginResp, err error)
+	LoginByPhone(ctx context.Context, req *resources.LoginByPhoneReq, opts ...http.CallOption) (rsp *resources.LoginResp, err error)
 	OpenApiLogin(ctx context.Context, req *resources.OpenApiLoginReq, opts ...http.CallOption) (rsp *resources.LoginResp, err error)
 	Ping(ctx context.Context, req *resources.PingReq, opts ...http.CallOption) (rsp *resources.PingResp, err error)
 	RefreshToken(ctx context.Context, req *resources.RefreshTokenReq, opts ...http.CallOption) (rsp *resources.LoginResp, err error)
@@ -149,6 +176,19 @@ func (c *SrvUserAuthV1HTTPClientImpl) LoginByEmail(ctx context.Context, in *reso
 	pattern := "/api/v1/user/auth/login-by-email"
 	path := binding.EncodeURL(pattern, in, false)
 	opts = append(opts, http.Operation(OperationSrvUserAuthV1LoginByEmail))
+	opts = append(opts, http.PathTemplate(pattern))
+	err := c.cc.Invoke(ctx, "POST", path, in, &out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return &out, nil
+}
+
+func (c *SrvUserAuthV1HTTPClientImpl) LoginByPhone(ctx context.Context, in *resources.LoginByPhoneReq, opts ...http.CallOption) (*resources.LoginResp, error) {
+	var out resources.LoginResp
+	pattern := "/api/v1/user/auth/login-by-phone"
+	path := binding.EncodeURL(pattern, in, false)
+	opts = append(opts, http.Operation(OperationSrvUserAuthV1LoginByPhone))
 	opts = append(opts, http.PathTemplate(pattern))
 	err := c.cc.Invoke(ctx, "POST", path, in, &out, opts...)
 	if err != nil {

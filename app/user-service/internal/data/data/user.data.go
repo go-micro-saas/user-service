@@ -221,7 +221,7 @@ func (s *userDataRepo) QueryOneByConditionsWithDBConn(ctx context.Context, dbCon
 }
 
 // QueryOneByUserId query one by id
-func (s *userDataRepo) QueryOneByUserId(ctx context.Context, userId int64) (dataModel *po.User, isNotFound bool, err error) {
+func (s *userDataRepo) QueryOneByUserId(ctx context.Context, userId uint64) (dataModel *po.User, isNotFound bool, err error) {
 	dataModel = new(po.User)
 	err = s.dbConn.WithContext(ctx).
 		Table(s.UserSchema.TableName()).

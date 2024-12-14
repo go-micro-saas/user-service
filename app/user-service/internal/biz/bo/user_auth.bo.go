@@ -2,6 +2,10 @@ package bo
 
 import authpkg "github.com/ikaiguang/go-srv-kit/kratos/auth"
 
+type LoginParam struct {
+	Password string
+}
+
 type SignTokenReq struct {
 	authpkg.Claims
 }

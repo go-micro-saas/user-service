@@ -34,6 +34,13 @@ service SrvUserAuthV1 {
       body: "*"
     };
   }
+  // 身份验证-手机登录
+  rpc LoginByPhone(resourcev1.LoginByPhoneReq) returns (resourcev1.LoginResp) {
+    option (google.api.http) = {
+      post: "/api/v1/user/auth/login-by-phone"
+      body: "*"
+    };
+  }
   // 身份验证-开发平台登录
   rpc OpenApiLogin(resourcev1.OpenApiLoginReq) returns (resourcev1.LoginResp) {
     option (google.api.http) = {

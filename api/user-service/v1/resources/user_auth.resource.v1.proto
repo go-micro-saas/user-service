@@ -60,6 +60,13 @@ message RegByEmailReq {
   string code             = 4;
 }
 
+// LoginByPhoneReq 用户登录
+message LoginByPhoneReq {
+  string phone    = 1;
+  string password = 2;
+  string code     = 3;
+}
+
 // LoginByEmailReq 用户登录
 message LoginByEmailReq {
   string email    = 1;

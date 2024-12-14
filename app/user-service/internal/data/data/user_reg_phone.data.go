@@ -191,6 +191,26 @@ func (s *userRegPhoneDataRepo) QueryOneByIdWithDBConn(ctx context.Context, dbCon
 	return s.queryOneById(ctx, dbConn, id)
 }
 
+// QueryOneByUserPhone query one by id
+func (s *userRegPhoneDataRepo) QueryOneByUserPhone(ctx context.Context, userPhone string) (dataModel *po.UserRegPhone, isNotFound bool, err error) {
+	dataModel = new(po.UserRegPhone)
+	err = s.dbConn.WithContext(ctx).
+		Table(s.UserRegPhoneSchema.TableName()).
+		Where(schemas.FieldUserPhone+" = ?", userPhone).
+		First(dataModel).Error
+	if err != nil {
+		if gormpkg.IsErrRecordNotFound(err) {
+			err = nil
+			isNotFound = true
+		} else {
+			e := errorpkg.ErrorInternalServer("")
+			err = errorpkg.Wrap(e, err)
+		}
+		return
+	}
+	return
+}
+
 // queryOneByConditions query one by conditions
 func (s *userRegPhoneDataRepo) queryOneByConditions(ctx context.Context, dbConn *gorm.DB, conditions map[string]interface{}) (dataModel *po.UserRegPhone, isNotFound bool, err error) {
 	dataModel = new(po.UserRegPhone)

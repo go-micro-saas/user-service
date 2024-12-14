@@ -23,6 +23,7 @@ const (
 	SrvUserAuthV1_Ping_FullMethodName         = "/saas.api.user.servicev1.SrvUserAuthV1/Ping"
 	SrvUserAuthV1_RefreshToken_FullMethodName = "/saas.api.user.servicev1.SrvUserAuthV1/RefreshToken"
 	SrvUserAuthV1_LoginByEmail_FullMethodName = "/saas.api.user.servicev1.SrvUserAuthV1/LoginByEmail"
+	SrvUserAuthV1_LoginByPhone_FullMethodName = "/saas.api.user.servicev1.SrvUserAuthV1/LoginByPhone"
 	SrvUserAuthV1_OpenApiLogin_FullMethodName = "/saas.api.user.servicev1.SrvUserAuthV1/OpenApiLogin"
 )
 
@@ -36,6 +37,8 @@ type SrvUserAuthV1Client interface {
 	RefreshToken(ctx context.Context, in *resources.RefreshTokenReq, opts ...grpc.CallOption) (*resources.LoginResp, error)
 	// 身份验证-Email登录
 	LoginByEmail(ctx context.Context, in *resources.LoginByEmailReq, opts ...grpc.CallOption) (*resources.LoginResp, error)
+	// 身份验证-手机登录
+	LoginByPhone(ctx context.Context, in *resources.LoginByPhoneReq, opts ...grpc.CallOption) (*resources.LoginResp, error)
 	// 身份验证-开发平台登录
 	OpenApiLogin(ctx context.Context, in *resources.OpenApiLoginReq, opts ...grpc.CallOption) (*resources.LoginResp, error)
 }
@@ -75,6 +78,15 @@ func (c *srvUserAuthV1Client) LoginByEmail(ctx context.Context, in *resources.Lo
 	return out, nil
 }
 
+func (c *srvUserAuthV1Client) LoginByPhone(ctx context.Context, in *resources.LoginByPhoneReq, opts ...grpc.CallOption) (*resources.LoginResp, error) {
+	out := new(resources.LoginResp)
+	err := c.cc.Invoke(ctx, SrvUserAuthV1_LoginByPhone_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *srvUserAuthV1Client) OpenApiLogin(ctx context.Context, in *resources.OpenApiLoginReq, opts ...grpc.CallOption) (*resources.LoginResp, error) {
 	out := new(resources.LoginResp)
 	err := c.cc.Invoke(ctx, SrvUserAuthV1_OpenApiLogin_FullMethodName, in, out, opts...)
@@ -94,6 +106,8 @@ type SrvUserAuthV1Server interface {
 	RefreshToken(context.Context, *resources.RefreshTokenReq) (*resources.LoginResp, error)
 	// 身份验证-Email登录
 	LoginByEmail(context.Context, *resources.LoginByEmailReq) (*resources.LoginResp, error)
+	// 身份验证-手机登录
+	LoginByPhone(context.Context, *resources.LoginByPhoneReq) (*resources.LoginResp, error)
 	// 身份验证-开发平台登录
 	OpenApiLogin(context.Context, *resources.OpenApiLoginReq) (*resources.LoginResp, error)
 	mustEmbedUnimplementedSrvUserAuthV1Server()
@@ -111,6 +125,9 @@ func (UnimplementedSrvUserAuthV1Server) RefreshToken(context.Context, *resources
 }
 func (UnimplementedSrvUserAuthV1Server) LoginByEmail(context.Context, *resources.LoginByEmailReq) (*resources.LoginResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method LoginByEmail not implemented")
+}
+func (UnimplementedSrvUserAuthV1Server) LoginByPhone(context.Context, *resources.LoginByPhoneReq) (*resources.LoginResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method LoginByPhone not implemented")
 }
 func (UnimplementedSrvUserAuthV1Server) OpenApiLogin(context.Context, *resources.OpenApiLoginReq) (*resources.LoginResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method OpenApiLogin not implemented")
@@ -182,6 +199,24 @@ func _SrvUserAuthV1_LoginByEmail_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _SrvUserAuthV1_LoginByPhone_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(resources.LoginByPhoneReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SrvUserAuthV1Server).LoginByPhone(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SrvUserAuthV1_LoginByPhone_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SrvUserAuthV1Server).LoginByPhone(ctx, req.(*resources.LoginByPhoneReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _SrvUserAuthV1_OpenApiLogin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(resources.OpenApiLoginReq)
 	if err := dec(in); err != nil {
@@ -218,6 +253,10 @@ var SrvUserAuthV1_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "LoginByEmail",
 			Handler:    _SrvUserAuthV1_LoginByEmail_Handler,
+		},
+		{
+			MethodName: "LoginByPhone",
+			Handler:    _SrvUserAuthV1_LoginByPhone_Handler,
 		},
 		{
 			MethodName: "OpenApiLogin",

@@ -17,9 +17,9 @@ message UserRegEmail {
   // updated_time 最后修改时间
   string updated_time = 3;
   // deleted_time 删除时间
-  int64 deleted_time = 4;
+  uint64 deleted_time = 4;
   // user_id uid
-  int64 user_id = 5;
+  uint64 user_id = 5;
   // user_email 邮箱
   string user_email = 6;
 }

@@ -37,8 +37,8 @@ type UserRegEmail struct {
 	Id          uint64    `gorm:"column:id;primaryKey;type:uint;autoIncrement;comment:ID" json:"id"`
 	CreatedTime time.Time `gorm:"column:created_time;type:time;not null;comment:创建时间" json:"created_time"`
 	UpdatedTime time.Time `gorm:"column:updated_time;type:time;not null;comment:最后修改时间" json:"updated_time"`
-	DeletedTime int64     `gorm:"column:deleted_time;type:int;default:0;comment:删除时间" json:"deleted_time"`
-	UserId      int64     `gorm:"column:user_id;index;type:int;not null;default:0;comment:uid" json:"user_id"`
+	DeletedTime uint64    `gorm:"column:deleted_time;type:uint;default:0;comment:删除时间" json:"deleted_time"`
+	UserId      uint64    `gorm:"column:user_id;index;type:uint;not null;default:0;comment:uid" json:"user_id"`
 	UserEmail   string    `gorm:"column:user_email;unique;type:string;size:255;not null;default:'';comment:邮箱" json:"user_email"`
 }
 
@@ -60,15 +60,15 @@ func (s *UserRegEmail) DropTableMigrator(migrator gorm.Migrator) migrationuitl.M
 // TableSQL table SQL
 func (s *UserRegEmail) TableSQL() string {
 	return `
-create table uid_user_reg_email (
+CREATE TABLE uid_user_reg_email (
 	id BIGINT unsigned auto_increment comment 'ID',
-	created_time DATETIME(3) not null comment '创建时间',
-	updated_time DATETIME(3) not null comment '最后修改时间',
-	deleted_time BIGINT null default 0 comment '删除时间',
-	user_id BIGINT not null default 0 comment 'uid',
-	user_email varchar(255) not null default '' comment '邮箱',
-	primary key (id),
-	unique key (user_email),
+	created_time DATETIME(3) NOT NULL comment '创建时间',
+	updated_time DATETIME(3) NOT NULL comment '最后修改时间',
+	deleted_time BIGINT NULL DEFAULT 0 comment '删除时间',
+	user_id BIGINT NOT NULL DEFAULT 0 comment 'uid',
+	user_email varchar(255) NOT NULL DEFAULT '' comment '邮箱',
+	PRIMARY KEY (id),
+	UNIQUE KEY (user_email),
 	key (user_id)
 ) ENGINE InnoDB,
   CHARSET utf8mb4,

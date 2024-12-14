@@ -3,6 +3,7 @@ package biz
 import (
 	"context"
 	errorv1 "github.com/go-micro-saas/user-service/api/user-service/v1/errors"
+	resourcev1 "github.com/go-micro-saas/user-service/api/user-service/v1/resources"
 	"github.com/go-micro-saas/user-service/app/user-service/internal/biz/bo"
 	bizrepos "github.com/go-micro-saas/user-service/app/user-service/internal/biz/repo"
 	"github.com/go-micro-saas/user-service/app/user-service/internal/data/po"
@@ -15,9 +16,10 @@ import (
 
 // userAuthBiz ...
 type userAuthBiz struct {
-	authRepo              authpkg.AuthRepo
-	userDataRepo          datarepos.UserDataRepo
-	userBindEmailDataRepo datarepos.UserRegEmailDataRepo
+	authRepo             authpkg.AuthRepo
+	userDataRepo         datarepos.UserDataRepo
+	userRegEmailDataRepo datarepos.UserRegEmailDataRepo
+	userRegPhoneDataRepo datarepos.UserRegPhoneDataRepo
 }
 
 // NewUserAuthBiz ...
@@ -25,18 +27,94 @@ func NewUserAuthBiz(
 	authRepo authpkg.AuthRepo,
 	userDataRepo datarepos.UserDataRepo,
 	userRegEmailDataRepo datarepos.UserRegEmailDataRepo,
+	userRegPhoneDataRepo datarepos.UserRegPhoneDataRepo,
 ) bizrepos.UserAuthBizRepo {
 	return &userAuthBiz{
-		authRepo:              authRepo,
-		userDataRepo:          userDataRepo,
-		userBindEmailDataRepo: userRegEmailDataRepo,
+		authRepo:             authRepo,
+		userDataRepo:         userDataRepo,
+		userRegEmailDataRepo: userRegEmailDataRepo,
+		userRegPhoneDataRepo: userRegPhoneDataRepo,
 	}
+}
+
+// LoginByEmail ...
+func (s *userAuthBiz) LoginByEmail(ctx context.Context, in *resourcev1.LoginByEmailReq) (*po.User, *bo.SignTokenResp, error) {
+	// 注册邮箱
+	regEmailModel, err := s.CheckAndGetByRegisterEmail(ctx, in.Email)
+	if err != nil {
+		return nil, nil, err
+	}
+	loginParam := &bo.LoginParam{
+		Password: in.Password,
+	}
+	return s.LoginByUserID(ctx, regEmailModel.UserId, loginParam)
+}
+
+// LoginByPhone ...
+func (s *userAuthBiz) LoginByPhone(ctx context.Context, in *resourcev1.LoginByPhoneReq) (*po.User, *bo.SignTokenResp, error) {
+	// 注册邮箱
+	regPhoneModel, err := s.CheckAndGetByRegisterEmail(ctx, in.Phone)
+	if err != nil {
+		return nil, nil, err
+	}
+	loginParam := &bo.LoginParam{
+		Password: in.Password,
+	}
+	return s.LoginByUserID(ctx, regPhoneModel.UserId, loginParam)
+}
+
+// LoginByUserID ...
+func (s *userAuthBiz) LoginByUserID(ctx context.Context, userID uint64, loginParam *bo.LoginParam) (*po.User, *bo.SignTokenResp, error) {
+	// user
+	userModel, err := s.CheckAndGetUserByUserId(ctx, userID)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	signResp, err := s.LoginByUser(ctx, userModel, loginParam)
+	if err != nil {
+		return nil, nil, err
+	}
+	return userModel, signResp, nil
+}
+
+// LoginByUser ...
+func (s *userAuthBiz) LoginByUser(ctx context.Context, userModel *po.User, loginParam *bo.LoginParam) (*bo.SignTokenResp, error) {
+	// 验证用户
+	err := s.ValidateLoginUser(userModel, loginParam.Password)
+	if err != nil {
+		return nil, err
+	}
+	// 签证
+	signReq, err := s.GenSignTokenRequestByUserModel(ctx, userModel)
+	if err != nil {
+		return nil, err
+	}
+	signResp, err := s.SignToken(ctx, signReq)
+	if err != nil {
+		return nil, err
+	}
+	return signResp, nil
 }
 
 // CheckAndGetByRegisterEmail 邮箱是否存在
 func (s *userAuthBiz) CheckAndGetByRegisterEmail(ctx context.Context, email string) (*po.UserRegEmail, error) {
 	// 注册邮箱
-	regEmailModel, isNotFound, err := s.userBindEmailDataRepo.QueryOneByUserEmail(ctx, email)
+	regEmailModel, isNotFound, err := s.userRegEmailDataRepo.QueryOneByUserEmail(ctx, email)
+	if err != nil {
+		return nil, err
+	}
+	if isNotFound {
+		e := errorv1.ErrorS103UserNotExist("用户不存在")
+		return nil, errorpkg.WithStack(e)
+	}
+	return regEmailModel, nil
+}
+
+// CheckAndGetByRegisterPhone 手机是否存在
+func (s *userAuthBiz) CheckAndGetByRegisterPhone(ctx context.Context, phone string) (*po.UserRegPhone, error) {
+	// 注册手机
+	regEmailModel, isNotFound, err := s.userRegPhoneDataRepo.QueryOneByUserPhone(ctx, phone)
 	if err != nil {
 		return nil, err
 	}
@@ -48,7 +126,7 @@ func (s *userAuthBiz) CheckAndGetByRegisterEmail(ctx context.Context, email stri
 }
 
 // CheckAndGetUserByUserId 用户是否存在
-func (s *userAuthBiz) CheckAndGetUserByUserId(ctx context.Context, userId int64) (*po.User, error) {
+func (s *userAuthBiz) CheckAndGetUserByUserId(ctx context.Context, userId uint64) (*po.User, error) {
 	userModel, isNotFound, err := s.userDataRepo.QueryOneByUserId(ctx, userId)
 	if err != nil {
 		return nil, err

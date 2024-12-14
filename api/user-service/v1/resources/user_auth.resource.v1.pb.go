@@ -456,6 +456,70 @@ func (x *RegByEmailReq) GetCode() string {
 	return ""
 }
 
+// LoginByPhoneReq 用户登录
+type LoginByPhoneReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Phone    string `protobuf:"bytes,1,opt,name=phone,proto3" json:"phone,omitempty"`
+	Password string `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
+	Code     string `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`
+}
+
+func (x *LoginByPhoneReq) Reset() {
+	*x = LoginByPhoneReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *LoginByPhoneReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LoginByPhoneReq) ProtoMessage() {}
+
+func (x *LoginByPhoneReq) ProtoReflect() protoreflect.Message {
+	mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LoginByPhoneReq.ProtoReflect.Descriptor instead.
+func (*LoginByPhoneReq) Descriptor() ([]byte, []int) {
+	return file_api_user_service_v1_resources_user_auth_resource_v1_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *LoginByPhoneReq) GetPhone() string {
+	if x != nil {
+		return x.Phone
+	}
+	return ""
+}
+
+func (x *LoginByPhoneReq) GetPassword() string {
+	if x != nil {
+		return x.Password
+	}
+	return ""
+}
+
+func (x *LoginByPhoneReq) GetCode() string {
+	if x != nil {
+		return x.Code
+	}
+	return ""
+}
+
 // LoginByEmailReq 用户登录
 type LoginByEmailReq struct {
 	state         protoimpl.MessageState
@@ -470,7 +534,7 @@ type LoginByEmailReq struct {
 func (x *LoginByEmailReq) Reset() {
 	*x = LoginByEmailReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[7]
+		mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -483,7 +547,7 @@ func (x *LoginByEmailReq) String() string {
 func (*LoginByEmailReq) ProtoMessage() {}
 
 func (x *LoginByEmailReq) ProtoReflect() protoreflect.Message {
-	mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[7]
+	mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -496,7 +560,7 @@ func (x *LoginByEmailReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoginByEmailReq.ProtoReflect.Descriptor instead.
 func (*LoginByEmailReq) Descriptor() ([]byte, []int) {
-	return file_api_user_service_v1_resources_user_auth_resource_v1_proto_rawDescGZIP(), []int{7}
+	return file_api_user_service_v1_resources_user_auth_resource_v1_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *LoginByEmailReq) GetEmail() string {
@@ -533,7 +597,7 @@ type OpenApiLoginReq struct {
 func (x *OpenApiLoginReq) Reset() {
 	*x = OpenApiLoginReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[8]
+		mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -546,7 +610,7 @@ func (x *OpenApiLoginReq) String() string {
 func (*OpenApiLoginReq) ProtoMessage() {}
 
 func (x *OpenApiLoginReq) ProtoReflect() protoreflect.Message {
-	mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[8]
+	mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -559,7 +623,7 @@ func (x *OpenApiLoginReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OpenApiLoginReq.ProtoReflect.Descriptor instead.
 func (*OpenApiLoginReq) Descriptor() ([]byte, []int) {
-	return file_api_user_service_v1_resources_user_auth_resource_v1_proto_rawDescGZIP(), []int{8}
+	return file_api_user_service_v1_resources_user_auth_resource_v1_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *OpenApiLoginReq) GetAccessId() string {
@@ -592,7 +656,7 @@ type LoginResp struct {
 func (x *LoginResp) Reset() {
 	*x = LoginResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[9]
+		mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[10]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -605,7 +669,7 @@ func (x *LoginResp) String() string {
 func (*LoginResp) ProtoMessage() {}
 
 func (x *LoginResp) ProtoReflect() protoreflect.Message {
-	mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[9]
+	mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[10]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -618,7 +682,7 @@ func (x *LoginResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoginResp.ProtoReflect.Descriptor instead.
 func (*LoginResp) Descriptor() ([]byte, []int) {
-	return file_api_user_service_v1_resources_user_auth_resource_v1_proto_rawDescGZIP(), []int{9}
+	return file_api_user_service_v1_resources_user_auth_resource_v1_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *LoginResp) GetUserInfo() *UserInfo {
@@ -668,7 +732,7 @@ type RefreshTokenReq struct {
 func (x *RefreshTokenReq) Reset() {
 	*x = RefreshTokenReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[10]
+		mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -681,7 +745,7 @@ func (x *RefreshTokenReq) String() string {
 func (*RefreshTokenReq) ProtoMessage() {}
 
 func (x *RefreshTokenReq) ProtoReflect() protoreflect.Message {
-	mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[10]
+	mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -694,7 +758,7 @@ func (x *RefreshTokenReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RefreshTokenReq.ProtoReflect.Descriptor instead.
 func (*RefreshTokenReq) Descriptor() ([]byte, []int) {
-	return file_api_user_service_v1_resources_user_auth_resource_v1_proto_rawDescGZIP(), []int{10}
+	return file_api_user_service_v1_resources_user_auth_resource_v1_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *RefreshTokenReq) GetRefreshToken() string {
@@ -718,7 +782,7 @@ type ChangePasswordReq struct {
 func (x *ChangePasswordReq) Reset() {
 	*x = ChangePasswordReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[11]
+		mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[12]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -731,7 +795,7 @@ func (x *ChangePasswordReq) String() string {
 func (*ChangePasswordReq) ProtoMessage() {}
 
 func (x *ChangePasswordReq) ProtoReflect() protoreflect.Message {
-	mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[11]
+	mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[12]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -744,7 +808,7 @@ func (x *ChangePasswordReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChangePasswordReq.ProtoReflect.Descriptor instead.
 func (*ChangePasswordReq) Descriptor() ([]byte, []int) {
-	return file_api_user_service_v1_resources_user_auth_resource_v1_proto_rawDescGZIP(), []int{11}
+	return file_api_user_service_v1_resources_user_auth_resource_v1_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *ChangePasswordReq) GetOldPassword() string {
@@ -778,7 +842,7 @@ type ChangePasswordResp struct {
 func (x *ChangePasswordResp) Reset() {
 	*x = ChangePasswordResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[12]
+		mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[13]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -791,7 +855,7 @@ func (x *ChangePasswordResp) String() string {
 func (*ChangePasswordResp) ProtoMessage() {}
 
 func (x *ChangePasswordResp) ProtoReflect() protoreflect.Message {
-	mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[12]
+	mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[13]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -804,7 +868,7 @@ func (x *ChangePasswordResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChangePasswordResp.ProtoReflect.Descriptor instead.
 func (*ChangePasswordResp) Descriptor() ([]byte, []int) {
-	return file_api_user_service_v1_resources_user_auth_resource_v1_proto_rawDescGZIP(), []int{12}
+	return file_api_user_service_v1_resources_user_auth_resource_v1_proto_rawDescGZIP(), []int{13}
 }
 
 // ChangeAvatarReq 修改头像
@@ -819,7 +883,7 @@ type ChangeAvatarReq struct {
 func (x *ChangeAvatarReq) Reset() {
 	*x = ChangeAvatarReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[13]
+		mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[14]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -832,7 +896,7 @@ func (x *ChangeAvatarReq) String() string {
 func (*ChangeAvatarReq) ProtoMessage() {}
 
 func (x *ChangeAvatarReq) ProtoReflect() protoreflect.Message {
-	mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[13]
+	mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[14]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -845,7 +909,7 @@ func (x *ChangeAvatarReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChangeAvatarReq.ProtoReflect.Descriptor instead.
 func (*ChangeAvatarReq) Descriptor() ([]byte, []int) {
-	return file_api_user_service_v1_resources_user_auth_resource_v1_proto_rawDescGZIP(), []int{13}
+	return file_api_user_service_v1_resources_user_auth_resource_v1_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *ChangeAvatarReq) GetUserAvatar() string {
@@ -865,7 +929,7 @@ type ChangeAvatarResp struct {
 func (x *ChangeAvatarResp) Reset() {
 	*x = ChangeAvatarResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[14]
+		mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[15]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -878,7 +942,7 @@ func (x *ChangeAvatarResp) String() string {
 func (*ChangeAvatarResp) ProtoMessage() {}
 
 func (x *ChangeAvatarResp) ProtoReflect() protoreflect.Message {
-	mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[14]
+	mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[15]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -891,7 +955,7 @@ func (x *ChangeAvatarResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChangeAvatarResp.ProtoReflect.Descriptor instead.
 func (*ChangeAvatarResp) Descriptor() ([]byte, []int) {
-	return file_api_user_service_v1_resources_user_auth_resource_v1_proto_rawDescGZIP(), []int{14}
+	return file_api_user_service_v1_resources_user_auth_resource_v1_proto_rawDescGZIP(), []int{15}
 }
 
 // ChangeMobileReq 修改手机号
@@ -906,7 +970,7 @@ type ChangeMobileReq struct {
 func (x *ChangeMobileReq) Reset() {
 	*x = ChangeMobileReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[15]
+		mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[16]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -919,7 +983,7 @@ func (x *ChangeMobileReq) String() string {
 func (*ChangeMobileReq) ProtoMessage() {}
 
 func (x *ChangeMobileReq) ProtoReflect() protoreflect.Message {
-	mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[15]
+	mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[16]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -932,7 +996,7 @@ func (x *ChangeMobileReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChangeMobileReq.ProtoReflect.Descriptor instead.
 func (*ChangeMobileReq) Descriptor() ([]byte, []int) {
-	return file_api_user_service_v1_resources_user_auth_resource_v1_proto_rawDescGZIP(), []int{15}
+	return file_api_user_service_v1_resources_user_auth_resource_v1_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *ChangeMobileReq) GetUserMobile() string {
@@ -952,7 +1016,7 @@ type ChangeMobileResp struct {
 func (x *ChangeMobileResp) Reset() {
 	*x = ChangeMobileResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[16]
+		mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[17]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -965,7 +1029,7 @@ func (x *ChangeMobileResp) String() string {
 func (*ChangeMobileResp) ProtoMessage() {}
 
 func (x *ChangeMobileResp) ProtoReflect() protoreflect.Message {
-	mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[16]
+	mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[17]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -978,7 +1042,7 @@ func (x *ChangeMobileResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChangeMobileResp.ProtoReflect.Descriptor instead.
 func (*ChangeMobileResp) Descriptor() ([]byte, []int) {
-	return file_api_user_service_v1_resources_user_auth_resource_v1_proto_rawDescGZIP(), []int{16}
+	return file_api_user_service_v1_resources_user_auth_resource_v1_proto_rawDescGZIP(), []int{17}
 }
 
 // ChangeEmailReq 修改邮箱
@@ -993,7 +1057,7 @@ type ChangeEmailReq struct {
 func (x *ChangeEmailReq) Reset() {
 	*x = ChangeEmailReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[17]
+		mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[18]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1006,7 +1070,7 @@ func (x *ChangeEmailReq) String() string {
 func (*ChangeEmailReq) ProtoMessage() {}
 
 func (x *ChangeEmailReq) ProtoReflect() protoreflect.Message {
-	mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[17]
+	mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[18]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1019,7 +1083,7 @@ func (x *ChangeEmailReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChangeEmailReq.ProtoReflect.Descriptor instead.
 func (*ChangeEmailReq) Descriptor() ([]byte, []int) {
-	return file_api_user_service_v1_resources_user_auth_resource_v1_proto_rawDescGZIP(), []int{17}
+	return file_api_user_service_v1_resources_user_auth_resource_v1_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *ChangeEmailReq) GetUserEmail() string {
@@ -1039,7 +1103,7 @@ type ChangeEmailResp struct {
 func (x *ChangeEmailResp) Reset() {
 	*x = ChangeEmailResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[18]
+		mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[19]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1052,7 +1116,7 @@ func (x *ChangeEmailResp) String() string {
 func (*ChangeEmailResp) ProtoMessage() {}
 
 func (x *ChangeEmailResp) ProtoReflect() protoreflect.Message {
-	mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[18]
+	mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[19]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1065,7 +1129,7 @@ func (x *ChangeEmailResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChangeEmailResp.ProtoReflect.Descriptor instead.
 func (*ChangeEmailResp) Descriptor() ([]byte, []int) {
-	return file_api_user_service_v1_resources_user_auth_resource_v1_proto_rawDescGZIP(), []int{18}
+	return file_api_user_service_v1_resources_user_auth_resource_v1_proto_rawDescGZIP(), []int{19}
 }
 
 // ChangeNicknameReq 修改昵称
@@ -1080,7 +1144,7 @@ type ChangeNicknameReq struct {
 func (x *ChangeNicknameReq) Reset() {
 	*x = ChangeNicknameReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[19]
+		mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[20]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1093,7 +1157,7 @@ func (x *ChangeNicknameReq) String() string {
 func (*ChangeNicknameReq) ProtoMessage() {}
 
 func (x *ChangeNicknameReq) ProtoReflect() protoreflect.Message {
-	mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[19]
+	mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[20]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1106,7 +1170,7 @@ func (x *ChangeNicknameReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChangeNicknameReq.ProtoReflect.Descriptor instead.
 func (*ChangeNicknameReq) Descriptor() ([]byte, []int) {
-	return file_api_user_service_v1_resources_user_auth_resource_v1_proto_rawDescGZIP(), []int{19}
+	return file_api_user_service_v1_resources_user_auth_resource_v1_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *ChangeNicknameReq) GetUserNickname() string {
@@ -1126,7 +1190,7 @@ type ChangeNicknameResp struct {
 func (x *ChangeNicknameResp) Reset() {
 	*x = ChangeNicknameResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[20]
+		mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[21]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1139,7 +1203,7 @@ func (x *ChangeNicknameResp) String() string {
 func (*ChangeNicknameResp) ProtoMessage() {}
 
 func (x *ChangeNicknameResp) ProtoReflect() protoreflect.Message {
-	mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[20]
+	mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[21]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1152,7 +1216,7 @@ func (x *ChangeNicknameResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChangeNicknameResp.ProtoReflect.Descriptor instead.
 func (*ChangeNicknameResp) Descriptor() ([]byte, []int) {
-	return file_api_user_service_v1_resources_user_auth_resource_v1_proto_rawDescGZIP(), []int{20}
+	return file_api_user_service_v1_resources_user_auth_resource_v1_proto_rawDescGZIP(), []int{21}
 }
 
 // ChangeGenderReq 修改性别
@@ -1167,7 +1231,7 @@ type ChangeGenderReq struct {
 func (x *ChangeGenderReq) Reset() {
 	*x = ChangeGenderReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[21]
+		mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[22]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1180,7 +1244,7 @@ func (x *ChangeGenderReq) String() string {
 func (*ChangeGenderReq) ProtoMessage() {}
 
 func (x *ChangeGenderReq) ProtoReflect() protoreflect.Message {
-	mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[21]
+	mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[22]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1193,7 +1257,7 @@ func (x *ChangeGenderReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChangeGenderReq.ProtoReflect.Descriptor instead.
 func (*ChangeGenderReq) Descriptor() ([]byte, []int) {
-	return file_api_user_service_v1_resources_user_auth_resource_v1_proto_rawDescGZIP(), []int{21}
+	return file_api_user_service_v1_resources_user_auth_resource_v1_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *ChangeGenderReq) GetUserGender() enums.UserGenderEnum_UserGender {
@@ -1213,7 +1277,7 @@ type ChangeGenderResp struct {
 func (x *ChangeGenderResp) Reset() {
 	*x = ChangeGenderResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[22]
+		mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[23]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1226,7 +1290,7 @@ func (x *ChangeGenderResp) String() string {
 func (*ChangeGenderResp) ProtoMessage() {}
 
 func (x *ChangeGenderResp) ProtoReflect() protoreflect.Message {
-	mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[22]
+	mi := &file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[23]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1239,7 +1303,7 @@ func (x *ChangeGenderResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChangeGenderResp.ProtoReflect.Descriptor instead.
 func (*ChangeGenderResp) Descriptor() ([]byte, []int) {
-	return file_api_user_service_v1_resources_user_auth_resource_v1_proto_rawDescGZIP(), []int{22}
+	return file_api_user_service_v1_resources_user_auth_resource_v1_proto_rawDescGZIP(), []int{23}
 }
 
 var File_api_user_service_v1_resources_user_auth_resource_v1_proto protoreflect.FileDescriptor
@@ -1295,82 +1359,87 @@ var file_api_user_service_v1_resources_user_auth_resource_v1_proto_rawDesc = []b
 	0x52, 0x0f, 0x70, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x72,
 	0x6d, 0x12, 0x12, 0x0a, 0x04, 0x63, 0x6f, 0x64, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52,
 	0x04, 0x63, 0x6f, 0x64, 0x65, 0x22, 0x57, 0x0a, 0x0f, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x42, 0x79,
-	0x45, 0x6d, 0x61, 0x69, 0x6c, 0x52, 0x65, 0x71, 0x12, 0x14, 0x0a, 0x05, 0x65, 0x6d, 0x61, 0x69,
-	0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x12, 0x1a,
+	0x50, 0x68, 0x6f, 0x6e, 0x65, 0x52, 0x65, 0x71, 0x12, 0x14, 0x0a, 0x05, 0x70, 0x68, 0x6f, 0x6e,
+	0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x70, 0x68, 0x6f, 0x6e, 0x65, 0x12, 0x1a,
 	0x0a, 0x08, 0x70, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09,
 	0x52, 0x08, 0x70, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x63, 0x6f,
-	0x64, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x63, 0x6f, 0x64, 0x65, 0x22, 0x53,
-	0x0a, 0x0f, 0x4f, 0x70, 0x65, 0x6e, 0x41, 0x70, 0x69, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x52, 0x65,
-	0x71, 0x12, 0x1b, 0x0a, 0x09, 0x61, 0x63, 0x63, 0x65, 0x73, 0x73, 0x5f, 0x69, 0x64, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x61, 0x63, 0x63, 0x65, 0x73, 0x73, 0x49, 0x64, 0x12, 0x23,
-	0x0a, 0x0d, 0x61, 0x63, 0x63, 0x65, 0x73, 0x73, 0x5f, 0x73, 0x65, 0x63, 0x72, 0x65, 0x74, 0x18,
-	0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x61, 0x63, 0x63, 0x65, 0x73, 0x73, 0x53, 0x65, 0x63,
-	0x72, 0x65, 0x74, 0x22, 0x84, 0x02, 0x0a, 0x09, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x52, 0x65, 0x73,
-	0x70, 0x12, 0x3f, 0x0a, 0x09, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x69, 0x6e, 0x66, 0x6f, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x0b, 0x32, 0x22, 0x2e, 0x73, 0x61, 0x61, 0x73, 0x2e, 0x61, 0x70, 0x69, 0x2e,
-	0x75, 0x73, 0x65, 0x72, 0x2e, 0x72, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x76, 0x31, 0x2e,
-	0x55, 0x73, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x08, 0x75, 0x73, 0x65, 0x72, 0x49, 0x6e,
-	0x66, 0x6f, 0x12, 0x21, 0x0a, 0x0c, 0x61, 0x63, 0x63, 0x65, 0x73, 0x73, 0x5f, 0x74, 0x6f, 0x6b,
-	0x65, 0x6e, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x61, 0x63, 0x63, 0x65, 0x73, 0x73,
-	0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x12, 0x35, 0x0a, 0x17, 0x61, 0x63, 0x63, 0x65, 0x73, 0x73, 0x5f,
-	0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x5f, 0x65, 0x78, 0x70, 0x69, 0x72, 0x65, 0x64, 0x5f, 0x61, 0x74,
-	0x18, 0x0b, 0x20, 0x01, 0x28, 0x03, 0x52, 0x14, 0x61, 0x63, 0x63, 0x65, 0x73, 0x73, 0x54, 0x6f,
-	0x6b, 0x65, 0x6e, 0x45, 0x78, 0x70, 0x69, 0x72, 0x65, 0x64, 0x41, 0x74, 0x12, 0x23, 0x0a, 0x0d,
-	0x72, 0x65, 0x66, 0x72, 0x65, 0x73, 0x68, 0x5f, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x0c, 0x20,
-	0x01, 0x28, 0x09, 0x52, 0x0c, 0x72, 0x65, 0x66, 0x72, 0x65, 0x73, 0x68, 0x54, 0x6f, 0x6b, 0x65,
-	0x6e, 0x12, 0x37, 0x0a, 0x18, 0x72, 0x65, 0x66, 0x72, 0x65, 0x73, 0x68, 0x5f, 0x74, 0x6f, 0x6b,
-	0x65, 0x6e, 0x5f, 0x65, 0x78, 0x70, 0x69, 0x72, 0x65, 0x64, 0x5f, 0x61, 0x74, 0x18, 0x0d, 0x20,
-	0x01, 0x28, 0x03, 0x52, 0x15, 0x72, 0x65, 0x66, 0x72, 0x65, 0x73, 0x68, 0x54, 0x6f, 0x6b, 0x65,
-	0x6e, 0x45, 0x78, 0x70, 0x69, 0x72, 0x65, 0x64, 0x41, 0x74, 0x22, 0x36, 0x0a, 0x0f, 0x52, 0x65,
-	0x66, 0x72, 0x65, 0x73, 0x68, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x52, 0x65, 0x71, 0x12, 0x23, 0x0a,
-	0x0d, 0x72, 0x65, 0x66, 0x72, 0x65, 0x73, 0x68, 0x5f, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x72, 0x65, 0x66, 0x72, 0x65, 0x73, 0x68, 0x54, 0x6f, 0x6b,
-	0x65, 0x6e, 0x22, 0x8b, 0x01, 0x0a, 0x11, 0x43, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x50, 0x61, 0x73,
-	0x73, 0x77, 0x6f, 0x72, 0x64, 0x52, 0x65, 0x71, 0x12, 0x21, 0x0a, 0x0c, 0x6f, 0x6c, 0x64, 0x5f,
-	0x70, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b,
-	0x6f, 0x6c, 0x64, 0x50, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x12, 0x21, 0x0a, 0x0c, 0x6e,
-	0x65, 0x77, 0x5f, 0x70, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28,
-	0x09, 0x52, 0x0b, 0x6e, 0x65, 0x77, 0x50, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x12, 0x30,
-	0x0a, 0x14, 0x6e, 0x65, 0x77, 0x5f, 0x70, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x5f, 0x63,
-	0x6f, 0x6e, 0x66, 0x69, 0x72, 0x6d, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x12, 0x6e, 0x65,
-	0x77, 0x50, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x72, 0x6d,
-	0x22, 0x14, 0x0a, 0x12, 0x43, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x50, 0x61, 0x73, 0x73, 0x77, 0x6f,
-	0x72, 0x64, 0x52, 0x65, 0x73, 0x70, 0x22, 0x32, 0x0a, 0x0f, 0x43, 0x68, 0x61, 0x6e, 0x67, 0x65,
-	0x41, 0x76, 0x61, 0x74, 0x61, 0x72, 0x52, 0x65, 0x71, 0x12, 0x1f, 0x0a, 0x0b, 0x75, 0x73, 0x65,
-	0x72, 0x5f, 0x61, 0x76, 0x61, 0x74, 0x61, 0x72, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a,
-	0x75, 0x73, 0x65, 0x72, 0x41, 0x76, 0x61, 0x74, 0x61, 0x72, 0x22, 0x12, 0x0a, 0x10, 0x43, 0x68,
-	0x61, 0x6e, 0x67, 0x65, 0x41, 0x76, 0x61, 0x74, 0x61, 0x72, 0x52, 0x65, 0x73, 0x70, 0x22, 0x32,
-	0x0a, 0x0f, 0x43, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x4d, 0x6f, 0x62, 0x69, 0x6c, 0x65, 0x52, 0x65,
-	0x71, 0x12, 0x1f, 0x0a, 0x0b, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x6d, 0x6f, 0x62, 0x69, 0x6c, 0x65,
-	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x75, 0x73, 0x65, 0x72, 0x4d, 0x6f, 0x62, 0x69,
-	0x6c, 0x65, 0x22, 0x12, 0x0a, 0x10, 0x43, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x4d, 0x6f, 0x62, 0x69,
-	0x6c, 0x65, 0x52, 0x65, 0x73, 0x70, 0x22, 0x2f, 0x0a, 0x0e, 0x43, 0x68, 0x61, 0x6e, 0x67, 0x65,
-	0x45, 0x6d, 0x61, 0x69, 0x6c, 0x52, 0x65, 0x71, 0x12, 0x1d, 0x0a, 0x0a, 0x75, 0x73, 0x65, 0x72,
-	0x5f, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x75, 0x73,
-	0x65, 0x72, 0x45, 0x6d, 0x61, 0x69, 0x6c, 0x22, 0x11, 0x0a, 0x0f, 0x43, 0x68, 0x61, 0x6e, 0x67,
-	0x65, 0x45, 0x6d, 0x61, 0x69, 0x6c, 0x52, 0x65, 0x73, 0x70, 0x22, 0x38, 0x0a, 0x11, 0x43, 0x68,
-	0x61, 0x6e, 0x67, 0x65, 0x4e, 0x69, 0x63, 0x6b, 0x6e, 0x61, 0x6d, 0x65, 0x52, 0x65, 0x71, 0x12,
-	0x23, 0x0a, 0x0d, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x6e, 0x69, 0x63, 0x6b, 0x6e, 0x61, 0x6d, 0x65,
-	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x75, 0x73, 0x65, 0x72, 0x4e, 0x69, 0x63, 0x6b,
-	0x6e, 0x61, 0x6d, 0x65, 0x22, 0x14, 0x0a, 0x12, 0x43, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x4e, 0x69,
-	0x63, 0x6b, 0x6e, 0x61, 0x6d, 0x65, 0x52, 0x65, 0x73, 0x70, 0x22, 0x63, 0x0a, 0x0f, 0x43, 0x68,
-	0x61, 0x6e, 0x67, 0x65, 0x47, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x52, 0x65, 0x71, 0x12, 0x50, 0x0a,
-	0x0b, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x67, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x18, 0x06, 0x20, 0x01,
-	0x28, 0x0e, 0x32, 0x2f, 0x2e, 0x73, 0x61, 0x61, 0x73, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x75, 0x73,
-	0x65, 0x72, 0x2e, 0x65, 0x6e, 0x75, 0x6d, 0x76, 0x31, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x47, 0x65,
-	0x6e, 0x64, 0x65, 0x72, 0x45, 0x6e, 0x75, 0x6d, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x47, 0x65, 0x6e,
-	0x64, 0x65, 0x72, 0x52, 0x0a, 0x75, 0x73, 0x65, 0x72, 0x47, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x22,
-	0x12, 0x0a, 0x10, 0x43, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x47, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x52,
-	0x65, 0x73, 0x70, 0x42, 0x83, 0x01, 0x0a, 0x18, 0x73, 0x61, 0x61, 0x73, 0x2e, 0x61, 0x70, 0x69,
-	0x2e, 0x75, 0x73, 0x65, 0x72, 0x2e, 0x72, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x76, 0x31,
-	0x42, 0x15, 0x53, 0x61, 0x61, 0x73, 0x41, 0x70, 0x69, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x73,
-	0x6f, 0x75, 0x72, 0x63, 0x65, 0x56, 0x31, 0x50, 0x01, 0x5a, 0x4e, 0x67, 0x69, 0x74, 0x68, 0x75,
-	0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x67, 0x6f, 0x2d, 0x6d, 0x69, 0x63, 0x72, 0x6f, 0x2d, 0x73,
-	0x61, 0x61, 0x73, 0x2f, 0x75, 0x73, 0x65, 0x72, 0x2d, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
-	0x2f, 0x61, 0x70, 0x69, 0x2f, 0x75, 0x73, 0x65, 0x72, 0x2d, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63,
-	0x65, 0x2f, 0x76, 0x31, 0x2f, 0x72, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x73, 0x3b, 0x72,
-	0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x76, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x33,
+	0x64, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x63, 0x6f, 0x64, 0x65, 0x22, 0x57,
+	0x0a, 0x0f, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x42, 0x79, 0x45, 0x6d, 0x61, 0x69, 0x6c, 0x52, 0x65,
+	0x71, 0x12, 0x14, 0x0a, 0x05, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x05, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x12, 0x1a, 0x0a, 0x08, 0x70, 0x61, 0x73, 0x73, 0x77,
+	0x6f, 0x72, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x70, 0x61, 0x73, 0x73, 0x77,
+	0x6f, 0x72, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x63, 0x6f, 0x64, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x04, 0x63, 0x6f, 0x64, 0x65, 0x22, 0x53, 0x0a, 0x0f, 0x4f, 0x70, 0x65, 0x6e, 0x41,
+	0x70, 0x69, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x52, 0x65, 0x71, 0x12, 0x1b, 0x0a, 0x09, 0x61, 0x63,
+	0x63, 0x65, 0x73, 0x73, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x61,
+	0x63, 0x63, 0x65, 0x73, 0x73, 0x49, 0x64, 0x12, 0x23, 0x0a, 0x0d, 0x61, 0x63, 0x63, 0x65, 0x73,
+	0x73, 0x5f, 0x73, 0x65, 0x63, 0x72, 0x65, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c,
+	0x61, 0x63, 0x63, 0x65, 0x73, 0x73, 0x53, 0x65, 0x63, 0x72, 0x65, 0x74, 0x22, 0x84, 0x02, 0x0a,
+	0x09, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x3f, 0x0a, 0x09, 0x75, 0x73,
+	0x65, 0x72, 0x5f, 0x69, 0x6e, 0x66, 0x6f, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x22, 0x2e,
+	0x73, 0x61, 0x61, 0x73, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x2e, 0x72, 0x65,
+	0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x76, 0x31, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x49, 0x6e, 0x66,
+	0x6f, 0x52, 0x08, 0x75, 0x73, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x21, 0x0a, 0x0c, 0x61,
+	0x63, 0x63, 0x65, 0x73, 0x73, 0x5f, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x0a, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x0b, 0x61, 0x63, 0x63, 0x65, 0x73, 0x73, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x12, 0x35,
+	0x0a, 0x17, 0x61, 0x63, 0x63, 0x65, 0x73, 0x73, 0x5f, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x5f, 0x65,
+	0x78, 0x70, 0x69, 0x72, 0x65, 0x64, 0x5f, 0x61, 0x74, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x03, 0x52,
+	0x14, 0x61, 0x63, 0x63, 0x65, 0x73, 0x73, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x45, 0x78, 0x70, 0x69,
+	0x72, 0x65, 0x64, 0x41, 0x74, 0x12, 0x23, 0x0a, 0x0d, 0x72, 0x65, 0x66, 0x72, 0x65, 0x73, 0x68,
+	0x5f, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x0c, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x72, 0x65,
+	0x66, 0x72, 0x65, 0x73, 0x68, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x12, 0x37, 0x0a, 0x18, 0x72, 0x65,
+	0x66, 0x72, 0x65, 0x73, 0x68, 0x5f, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x5f, 0x65, 0x78, 0x70, 0x69,
+	0x72, 0x65, 0x64, 0x5f, 0x61, 0x74, 0x18, 0x0d, 0x20, 0x01, 0x28, 0x03, 0x52, 0x15, 0x72, 0x65,
+	0x66, 0x72, 0x65, 0x73, 0x68, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x45, 0x78, 0x70, 0x69, 0x72, 0x65,
+	0x64, 0x41, 0x74, 0x22, 0x36, 0x0a, 0x0f, 0x52, 0x65, 0x66, 0x72, 0x65, 0x73, 0x68, 0x54, 0x6f,
+	0x6b, 0x65, 0x6e, 0x52, 0x65, 0x71, 0x12, 0x23, 0x0a, 0x0d, 0x72, 0x65, 0x66, 0x72, 0x65, 0x73,
+	0x68, 0x5f, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x72,
+	0x65, 0x66, 0x72, 0x65, 0x73, 0x68, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x22, 0x8b, 0x01, 0x0a, 0x11,
+	0x43, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x50, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x52, 0x65,
+	0x71, 0x12, 0x21, 0x0a, 0x0c, 0x6f, 0x6c, 0x64, 0x5f, 0x70, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72,
+	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x6f, 0x6c, 0x64, 0x50, 0x61, 0x73, 0x73,
+	0x77, 0x6f, 0x72, 0x64, 0x12, 0x21, 0x0a, 0x0c, 0x6e, 0x65, 0x77, 0x5f, 0x70, 0x61, 0x73, 0x73,
+	0x77, 0x6f, 0x72, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x6e, 0x65, 0x77, 0x50,
+	0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x12, 0x30, 0x0a, 0x14, 0x6e, 0x65, 0x77, 0x5f, 0x70,
+	0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x5f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x72, 0x6d, 0x18,
+	0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x12, 0x6e, 0x65, 0x77, 0x50, 0x61, 0x73, 0x73, 0x77, 0x6f,
+	0x72, 0x64, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x72, 0x6d, 0x22, 0x14, 0x0a, 0x12, 0x43, 0x68, 0x61,
+	0x6e, 0x67, 0x65, 0x50, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x52, 0x65, 0x73, 0x70, 0x22,
+	0x32, 0x0a, 0x0f, 0x43, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x41, 0x76, 0x61, 0x74, 0x61, 0x72, 0x52,
+	0x65, 0x71, 0x12, 0x1f, 0x0a, 0x0b, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x61, 0x76, 0x61, 0x74, 0x61,
+	0x72, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x75, 0x73, 0x65, 0x72, 0x41, 0x76, 0x61,
+	0x74, 0x61, 0x72, 0x22, 0x12, 0x0a, 0x10, 0x43, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x41, 0x76, 0x61,
+	0x74, 0x61, 0x72, 0x52, 0x65, 0x73, 0x70, 0x22, 0x32, 0x0a, 0x0f, 0x43, 0x68, 0x61, 0x6e, 0x67,
+	0x65, 0x4d, 0x6f, 0x62, 0x69, 0x6c, 0x65, 0x52, 0x65, 0x71, 0x12, 0x1f, 0x0a, 0x0b, 0x75, 0x73,
+	0x65, 0x72, 0x5f, 0x6d, 0x6f, 0x62, 0x69, 0x6c, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x0a, 0x75, 0x73, 0x65, 0x72, 0x4d, 0x6f, 0x62, 0x69, 0x6c, 0x65, 0x22, 0x12, 0x0a, 0x10, 0x43,
+	0x68, 0x61, 0x6e, 0x67, 0x65, 0x4d, 0x6f, 0x62, 0x69, 0x6c, 0x65, 0x52, 0x65, 0x73, 0x70, 0x22,
+	0x2f, 0x0a, 0x0e, 0x43, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x45, 0x6d, 0x61, 0x69, 0x6c, 0x52, 0x65,
+	0x71, 0x12, 0x1d, 0x0a, 0x0a, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x18,
+	0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x75, 0x73, 0x65, 0x72, 0x45, 0x6d, 0x61, 0x69, 0x6c,
+	0x22, 0x11, 0x0a, 0x0f, 0x43, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x45, 0x6d, 0x61, 0x69, 0x6c, 0x52,
+	0x65, 0x73, 0x70, 0x22, 0x38, 0x0a, 0x11, 0x43, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x4e, 0x69, 0x63,
+	0x6b, 0x6e, 0x61, 0x6d, 0x65, 0x52, 0x65, 0x71, 0x12, 0x23, 0x0a, 0x0d, 0x75, 0x73, 0x65, 0x72,
+	0x5f, 0x6e, 0x69, 0x63, 0x6b, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x0c, 0x75, 0x73, 0x65, 0x72, 0x4e, 0x69, 0x63, 0x6b, 0x6e, 0x61, 0x6d, 0x65, 0x22, 0x14, 0x0a,
+	0x12, 0x43, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x4e, 0x69, 0x63, 0x6b, 0x6e, 0x61, 0x6d, 0x65, 0x52,
+	0x65, 0x73, 0x70, 0x22, 0x63, 0x0a, 0x0f, 0x43, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x47, 0x65, 0x6e,
+	0x64, 0x65, 0x72, 0x52, 0x65, 0x71, 0x12, 0x50, 0x0a, 0x0b, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x67,
+	0x65, 0x6e, 0x64, 0x65, 0x72, 0x18, 0x06, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x2f, 0x2e, 0x73, 0x61,
+	0x61, 0x73, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x2e, 0x65, 0x6e, 0x75, 0x6d,
+	0x76, 0x31, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x47, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x45, 0x6e, 0x75,
+	0x6d, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x47, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x52, 0x0a, 0x75, 0x73,
+	0x65, 0x72, 0x47, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x22, 0x12, 0x0a, 0x10, 0x43, 0x68, 0x61, 0x6e,
+	0x67, 0x65, 0x47, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x42, 0x83, 0x01, 0x0a,
+	0x18, 0x73, 0x61, 0x61, 0x73, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x2e, 0x72,
+	0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x76, 0x31, 0x42, 0x15, 0x53, 0x61, 0x61, 0x73, 0x41,
+	0x70, 0x69, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x56, 0x31,
+	0x50, 0x01, 0x5a, 0x4e, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x67,
+	0x6f, 0x2d, 0x6d, 0x69, 0x63, 0x72, 0x6f, 0x2d, 0x73, 0x61, 0x61, 0x73, 0x2f, 0x75, 0x73, 0x65,
+	0x72, 0x2d, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x75, 0x73,
+	0x65, 0x72, 0x2d, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2f, 0x76, 0x31, 0x2f, 0x72, 0x65,
+	0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x73, 0x3b, 0x72, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65,
+	0x76, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1385,7 +1454,7 @@ func file_api_user_service_v1_resources_user_auth_resource_v1_proto_rawDescGZIP(
 	return file_api_user_service_v1_resources_user_auth_resource_v1_proto_rawDescData
 }
 
-var file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes = make([]protoimpl.MessageInfo, 23)
+var file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes = make([]protoimpl.MessageInfo, 24)
 var file_api_user_service_v1_resources_user_auth_resource_v1_proto_goTypes = []interface{}{
 	(*PingReq)(nil),                      // 0: saas.api.user.resourcev1.PingReq
 	(*PingResp)(nil),                     // 1: saas.api.user.resourcev1.PingResp
@@ -1394,27 +1463,28 @@ var file_api_user_service_v1_resources_user_auth_resource_v1_proto_goTypes = []i
 	(*RegByUserNameReq)(nil),             // 4: saas.api.user.resourcev1.RegByUserNameReq
 	(*LoginByUserNameReq)(nil),           // 5: saas.api.user.resourcev1.LoginByUserNameReq
 	(*RegByEmailReq)(nil),                // 6: saas.api.user.resourcev1.RegByEmailReq
-	(*LoginByEmailReq)(nil),              // 7: saas.api.user.resourcev1.LoginByEmailReq
-	(*OpenApiLoginReq)(nil),              // 8: saas.api.user.resourcev1.OpenApiLoginReq
-	(*LoginResp)(nil),                    // 9: saas.api.user.resourcev1.LoginResp
-	(*RefreshTokenReq)(nil),              // 10: saas.api.user.resourcev1.RefreshTokenReq
-	(*ChangePasswordReq)(nil),            // 11: saas.api.user.resourcev1.ChangePasswordReq
-	(*ChangePasswordResp)(nil),           // 12: saas.api.user.resourcev1.ChangePasswordResp
-	(*ChangeAvatarReq)(nil),              // 13: saas.api.user.resourcev1.ChangeAvatarReq
-	(*ChangeAvatarResp)(nil),             // 14: saas.api.user.resourcev1.ChangeAvatarResp
-	(*ChangeMobileReq)(nil),              // 15: saas.api.user.resourcev1.ChangeMobileReq
-	(*ChangeMobileResp)(nil),             // 16: saas.api.user.resourcev1.ChangeMobileResp
-	(*ChangeEmailReq)(nil),               // 17: saas.api.user.resourcev1.ChangeEmailReq
-	(*ChangeEmailResp)(nil),              // 18: saas.api.user.resourcev1.ChangeEmailResp
-	(*ChangeNicknameReq)(nil),            // 19: saas.api.user.resourcev1.ChangeNicknameReq
-	(*ChangeNicknameResp)(nil),           // 20: saas.api.user.resourcev1.ChangeNicknameResp
-	(*ChangeGenderReq)(nil),              // 21: saas.api.user.resourcev1.ChangeGenderReq
-	(*ChangeGenderResp)(nil),             // 22: saas.api.user.resourcev1.ChangeGenderResp
-	(enums.UserGenderEnum_UserGender)(0), // 23: saas.api.user.enumv1.UserGenderEnum.UserGender
+	(*LoginByPhoneReq)(nil),              // 7: saas.api.user.resourcev1.LoginByPhoneReq
+	(*LoginByEmailReq)(nil),              // 8: saas.api.user.resourcev1.LoginByEmailReq
+	(*OpenApiLoginReq)(nil),              // 9: saas.api.user.resourcev1.OpenApiLoginReq
+	(*LoginResp)(nil),                    // 10: saas.api.user.resourcev1.LoginResp
+	(*RefreshTokenReq)(nil),              // 11: saas.api.user.resourcev1.RefreshTokenReq
+	(*ChangePasswordReq)(nil),            // 12: saas.api.user.resourcev1.ChangePasswordReq
+	(*ChangePasswordResp)(nil),           // 13: saas.api.user.resourcev1.ChangePasswordResp
+	(*ChangeAvatarReq)(nil),              // 14: saas.api.user.resourcev1.ChangeAvatarReq
+	(*ChangeAvatarResp)(nil),             // 15: saas.api.user.resourcev1.ChangeAvatarResp
+	(*ChangeMobileReq)(nil),              // 16: saas.api.user.resourcev1.ChangeMobileReq
+	(*ChangeMobileResp)(nil),             // 17: saas.api.user.resourcev1.ChangeMobileResp
+	(*ChangeEmailReq)(nil),               // 18: saas.api.user.resourcev1.ChangeEmailReq
+	(*ChangeEmailResp)(nil),              // 19: saas.api.user.resourcev1.ChangeEmailResp
+	(*ChangeNicknameReq)(nil),            // 20: saas.api.user.resourcev1.ChangeNicknameReq
+	(*ChangeNicknameResp)(nil),           // 21: saas.api.user.resourcev1.ChangeNicknameResp
+	(*ChangeGenderReq)(nil),              // 22: saas.api.user.resourcev1.ChangeGenderReq
+	(*ChangeGenderResp)(nil),             // 23: saas.api.user.resourcev1.ChangeGenderResp
+	(enums.UserGenderEnum_UserGender)(0), // 24: saas.api.user.enumv1.UserGenderEnum.UserGender
 }
 var file_api_user_service_v1_resources_user_auth_resource_v1_proto_depIdxs = []int32{
 	2,  // 0: saas.api.user.resourcev1.LoginResp.user_info:type_name -> saas.api.user.resourcev1.UserInfo
-	23, // 1: saas.api.user.resourcev1.ChangeGenderReq.user_gender:type_name -> saas.api.user.enumv1.UserGenderEnum.UserGender
+	24, // 1: saas.api.user.resourcev1.ChangeGenderReq.user_gender:type_name -> saas.api.user.enumv1.UserGenderEnum.UserGender
 	2,  // [2:2] is the sub-list for method output_type
 	2,  // [2:2] is the sub-list for method input_type
 	2,  // [2:2] is the sub-list for extension type_name
@@ -1513,7 +1583,7 @@ func file_api_user_service_v1_resources_user_auth_resource_v1_proto_init() {
 			}
 		}
 		file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*LoginByEmailReq); i {
+			switch v := v.(*LoginByPhoneReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1525,7 +1595,7 @@ func file_api_user_service_v1_resources_user_auth_resource_v1_proto_init() {
 			}
 		}
 		file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*OpenApiLoginReq); i {
+			switch v := v.(*LoginByEmailReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1537,7 +1607,7 @@ func file_api_user_service_v1_resources_user_auth_resource_v1_proto_init() {
 			}
 		}
 		file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*LoginResp); i {
+			switch v := v.(*OpenApiLoginReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1549,7 +1619,7 @@ func file_api_user_service_v1_resources_user_auth_resource_v1_proto_init() {
 			}
 		}
 		file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RefreshTokenReq); i {
+			switch v := v.(*LoginResp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1561,7 +1631,7 @@ func file_api_user_service_v1_resources_user_auth_resource_v1_proto_init() {
 			}
 		}
 		file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ChangePasswordReq); i {
+			switch v := v.(*RefreshTokenReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1573,7 +1643,7 @@ func file_api_user_service_v1_resources_user_auth_resource_v1_proto_init() {
 			}
 		}
 		file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ChangePasswordResp); i {
+			switch v := v.(*ChangePasswordReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1585,7 +1655,7 @@ func file_api_user_service_v1_resources_user_auth_resource_v1_proto_init() {
 			}
 		}
 		file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ChangeAvatarReq); i {
+			switch v := v.(*ChangePasswordResp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1597,7 +1667,7 @@ func file_api_user_service_v1_resources_user_auth_resource_v1_proto_init() {
 			}
 		}
 		file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ChangeAvatarResp); i {
+			switch v := v.(*ChangeAvatarReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1609,7 +1679,7 @@ func file_api_user_service_v1_resources_user_auth_resource_v1_proto_init() {
 			}
 		}
 		file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ChangeMobileReq); i {
+			switch v := v.(*ChangeAvatarResp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1621,7 +1691,7 @@ func file_api_user_service_v1_resources_user_auth_resource_v1_proto_init() {
 			}
 		}
 		file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ChangeMobileResp); i {
+			switch v := v.(*ChangeMobileReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1633,7 +1703,7 @@ func file_api_user_service_v1_resources_user_auth_resource_v1_proto_init() {
 			}
 		}
 		file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ChangeEmailReq); i {
+			switch v := v.(*ChangeMobileResp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1645,7 +1715,7 @@ func file_api_user_service_v1_resources_user_auth_resource_v1_proto_init() {
 			}
 		}
 		file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ChangeEmailResp); i {
+			switch v := v.(*ChangeEmailReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1657,7 +1727,7 @@ func file_api_user_service_v1_resources_user_auth_resource_v1_proto_init() {
 			}
 		}
 		file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ChangeNicknameReq); i {
+			switch v := v.(*ChangeEmailResp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1669,7 +1739,7 @@ func file_api_user_service_v1_resources_user_auth_resource_v1_proto_init() {
 			}
 		}
 		file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[20].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ChangeNicknameResp); i {
+			switch v := v.(*ChangeNicknameReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1681,7 +1751,7 @@ func file_api_user_service_v1_resources_user_auth_resource_v1_proto_init() {
 			}
 		}
 		file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ChangeGenderReq); i {
+			switch v := v.(*ChangeNicknameResp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1693,6 +1763,18 @@ func file_api_user_service_v1_resources_user_auth_resource_v1_proto_init() {
 			}
 		}
 		file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[22].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ChangeGenderReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_api_user_service_v1_resources_user_auth_resource_v1_proto_msgTypes[23].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ChangeGenderResp); i {
 			case 0:
 				return &v.state
@@ -1711,7 +1793,7 @@ func file_api_user_service_v1_resources_user_auth_resource_v1_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_api_user_service_v1_resources_user_auth_resource_v1_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   23,
+			NumMessages:   24,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

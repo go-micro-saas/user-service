@@ -17,6 +17,7 @@ type UserRegPhoneDataRepo interface {
 	Update(ctx context.Context, dataModel *po.UserRegPhone) error
 	ExistUpdate(ctx context.Context, dataModel *po.UserRegPhone) (anotherModel *po.UserRegPhone, isNotFound bool, err error)
 	QueryOneById(ctx context.Context, id interface{}) (dataModel *po.UserRegPhone, isNotFound bool, err error)
+	QueryOneByUserPhone(ctx context.Context, userPhone string) (dataModel *po.UserRegPhone, isNotFound bool, err error)
 	QueryOneByConditions(ctx context.Context, conditions map[string]interface{}) (dataModel *po.UserRegPhone, isNotFound bool, err error)
 	QueryAllByConditions(ctx context.Context, conditions map[string]interface{}) (dataModels []*po.UserRegPhone, err error)
 	List(ctx context.Context, conditions map[string]interface{}, paginatorArgs *gormpkg.PaginatorArgs) (dataModels []*po.UserRegPhone, totalNumber int64, err error)
