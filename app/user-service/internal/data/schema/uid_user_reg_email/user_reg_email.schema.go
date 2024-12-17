@@ -37,7 +37,7 @@ type UserRegEmail struct {
 	Id          uint64    `gorm:"column:id;primaryKey;type:uint;autoIncrement;comment:ID" json:"id"`
 	CreatedTime time.Time `gorm:"column:created_time;type:time;not null;comment:创建时间" json:"created_time"`
 	UpdatedTime time.Time `gorm:"column:updated_time;type:time;not null;comment:最后修改时间" json:"updated_time"`
-	DeletedTime uint64    `gorm:"column:deleted_time;type:uint;default:0;comment:删除时间" json:"deleted_time"`
+	DeletedTime uint64    `gorm:"column:deleted_time;type:uint;not null;default:0;comment:删除时间" json:"deleted_time"`
 	UserId      uint64    `gorm:"column:user_id;index;type:uint;not null;default:0;comment:uid" json:"user_id"`
 	UserEmail   string    `gorm:"column:user_email;unique;type:string;size:255;not null;default:'';comment:邮箱" json:"user_email"`
 }
