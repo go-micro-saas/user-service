@@ -142,6 +142,7 @@ func (s *user) initializeUserUp(dbConn *gorm.DB, userID uint64, userEmail, userP
 		UserId:       userID,
 		CreatedTime:  now,
 		UpdatedTime:  now,
+		UserPhone:    regPhoneModel.UserPhone,
 		UserEmail:    regEmailModel.UserEmail,
 		UserNickname: userNickname,
 		UserAvatar:   "",
